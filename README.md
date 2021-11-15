@@ -1,2 +1,2 @@
 # ZBN-public
-This is a public api that will run on a cloud computer/network
+This is an api that will run on a cloud computer/network
