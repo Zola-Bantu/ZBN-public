@@ -11,3 +11,19 @@ class Mosebedisi(models.Model):
 	
     def __str__(self):
         return "%s" % (self.username);
+
+
+#Profile table
+
+class Profile(models.Model):
+    Mosebedisi = models.OneToOneField(
+        Mosebedisi,
+        on_delete=models.CASCADE,
+    primary_key=True,
+        );
+    Profile Picture = models.FileField();
+    Female = models.BooleanField(default=True);
+    Status = models.CharField(max_length=50 ,blank=True, null=True);
+    Bio =  models.CharField(blank=True, null=True);
+
+
