@@ -1,0 +1,308 @@
+##########################################################################################################
+#			APPENDIX A
+#
+## To push work into our ZBN-public repository. Change directory to ZBN-public.
+# In terminal, this should just be
+#
+# $ cd /home/.../ZBN-public
+# $ git status
+# $ git add -A # -A ensures we add all untracked changes
+#
+# Commit
+#
+# $ git commit -m "This is the first commit with the user table"
+#
+# You may be required to configure settings. Simply run, and use your GitHub email address and username
+#
+# $ git config --global user.email "you@email.com"
+# $ git config --global user.name "your_username"
+#
+# Try again the commit.
+#
+# $ git commit -m "This is the first commit with the user table"
+#
+# It should commit smoothly this time. Now run,
+#
+# $ git push
+#
+# Complete with username and personal access token.
+#########################################################################################################
+#########################################################################################################
+# Create database commands.
+# Tutorial by Kagiso Kobue.
+# All code documented here has been done in python and
+# operated from Linux (Ubuntu) OS. If you use a different machine
+# be sure to make necessary adjustments where certain commands
+# differ.
+#
+# Requirements: 1. python >= 3.6
+#		 2. ZBN-public repository
+#		 3. Django 2.2.6
+#
+# Assuming you already have python of version 3.6 or higher.
+# If not you may create a virtual environment with the required python.
+# This step has been omitted from these notes. To create a virtual environment
+# Please watch the first few minutes of the video https://youtu.be/BEfsb0pXy10
+# Requirement 2.:
+#
+# $ git clone https://github.com/Zola-Bantu/ZBN-public.git
+#
+# Input your GitHub username and personal access token.
+#=======================================================#
+# For personal access token go to your GitHub account.  #
+# Click your profile                                    #
+# Go to settings                                        #
+# Scroll down and look for                              #
+# Developer settings                                    #
+# It will be on the left side, click it.                #
+# Select how many days you want it to be available for. #
+# Select repo full access                               #
+# Scroll to the botton and click Generate token.        #
+# Save the personal access token somewhere safe. You    #
+# will need it everytime you perform some operation on  #
+# GitHub such as a commit or push etc.                  #
+#=======================================================#
+# Requirement 3.:
+#
+# $ pip install django==2.2.6
+#
+# Change directory to ZBN-public
+#
+# $ cd ZBN-public
+#
+#
+# Now to begin work. Create a project.
+#
+# $ django-admin startproject <proj_name>
+# $ cd <proj_name>
+#
+# Create an app.
+#
+# $ python manage.py startapp <app_name>
+#
+# Now App has to be connected to Project. Do the following,
+# Go to project folder (<proj_name>),
+# open settings.py
+# Scroll to 
+# INSTALLED_APPS = {...,
+#		     ...,
+#                  }
+# Add the line <app_name> as follows,
+# INSTALLED_APPS = {...,
+#		     ...,
+#		     <app_name>
+#                  }
+#
+# Next go to app folder (<app_name>) >>
+# open models.py
+# This is where we create database tables.
+# Make a table.
+# class Table1(models.Model):
+# 	# FOR A LIST OF FIELDS AVAILABLE UNDER THE MODEL CLASS
+#	# DOWNLOAD THE DOCUMENT (see page 1106):
+#	# https://drive.google.com/file/d/1d19IhG_dtkkvhUX1Txf7IC-_p-rf7WQ8/view?usp=sharing
+#
+# 	username = models.CharField(max_length=50,		# Maximum allowed number of characters of the username.
+#				 blank=True, null=True,	# Allows username to be empty.
+#				 )
+#	pkn = models.BigIntegerField(default=0) # Public key n
+#	pkn = models.BigIntegerField(default=0) # Public key e
+#
+# 	def __str__(self):
+#		return "Username: %s" % (self.username)
+#
+# Next we must connect our database table (Table1) to the admin panel.
+# In this same directory as models.py
+# open admin.py
+# Include the following import
+# from .models import Table1
+# Then register the model (our Table1) in the admin as follows,
+# admin.site.register(Table1)
+#
+# Note that this pseudo code is written in general terms. For our purposes,
+# we have to make the replacements:
+# Table1 	with Mosebedisi
+# <proj_name> 	with zbn1
+# <app_name> 	with home
+
+# We then have to migrate the database table to the database itself.
+# Go to the terminal and type the command
+#
+# $ python manage.py makemigrations	# Creates sqlite3 database "db.sqlite3"
+# $ python manage.py migrate		# Migrates Table1 into db.sqlite3.
+#
+# To check the Table1 (Mosebedisi) we give ourselves administrator access as follows in the terminal
+#
+# $ python manage.py createsuperuser
+#
+# Fill in the required details.
+#
+# Run the local host,
+#
+# $ python manage.py runserver
+#
+# Copy the local server link (e.g., //https:127.0.0.1:000) from the terminal and paste it into your browser.
+#
+# To go to the admin desk go to //https:127.0.0.1:000/admin
+#
+# ============================================================================
+# PUSH THE WORK TO ZBN-Public GITHUB REPOSITORY.
+# REFER TO APPENDIX A ABOVE FOR HOW TO PUSH WORK INTO GITHUB.
+################################################################################
+#
+# 02 May Episode(How to make a database Ep2). Turning a database into an API.
+# You will need to have djangorestframework in your system. To install it,
+# use this command in the terminal.
+#
+# $ pip install djangorestframework
+#
+# For documentation on the djangorestframework, you can visit
+# https://www.django-rest-framework.org
+#
+#======================================================================================
+# Navigate to the project and open settings.py (e.g. ZBN-public/zbn1/zbn1/settings.py).
+# 
+# Under
+# INSTALLED_APPS = {...,
+#		     ...,
+#                  }
+# Add the line 'rest_framework' as follows,
+# INSTALLED_APPS = {...,
+#		     ...,
+#		     'rest_framework',
+#                  }
+# 
+#=======================================================================================
+# Then in urls.py (same directory as settings.py)
+# In urlpatterns, add the lines
+#
+# <path('api-auth/', include('rest_framework.urls')),
+# path('', include('home.urls')),>
+
+# as follows
+#
+# urlpatterns = [
+#     ...
+#     path('api-auth/', include('rest_framework.urls')),
+#     path('', include('home.urls')),
+# ]
+# 
+# In the same urls.py file, add the following import
+#
+# from django.urls import include
+#
+#========================================================================================
+# Now, navigate to the app folder (e.g. home). Create a new file called serializer.py
+# 
+# In serializer.py
+#
+# from rest_framework import serializers;
+# from .models import *;
+#
+# class Mos_serializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Mosebedisi; # Use our defined model.
+#         fields = "__all__"; # Brings all fields from the database.
+# 
+# In the same directory, create a file called
+#
+# api.py
+#
+# In api.py
+#
+# from rest_framework.views import APIView;
+# from rest_framework.response import Response;
+# from rest_framework import status;
+# from .serializer import *;
+#
+# class MosList(APIView):
+#     # Gets data from the database.
+#     def get(self, request):
+#         model = Mosebedisi.objects.all();
+#         serializer = Mos_serializer(model, many=True);
+#         return Response(serializer.data);
+#
+#     def post(self, request):
+#         serializer = Mos_serializer(data=request.data);
+#         if serializer.is_valid():
+#             serializer.save();
+#             return Response(serializer.data, status=status.HTTP_201_CREATED);
+#         return Reponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST);
+#
+# class MosDetail(APIView):
+#     def get_mos(self, pk):
+#         try:
+#             model = Mosebedisi.objects.get(id=pk);
+#             return model;
+#         except Exception as e:
+#             print(e);
+#             return;
+#    
+#     def get(self, requests, pk):
+#         if not self.get_mos(pk):
+#             return Response("No data");
+#         serializer = Mos_serializer(self.get_mos(pk));
+#         return Response(serializer.data);
+#        
+#     def put(self, requests, pk):
+#         if not self.get_mos(pk):
+#             return Response("No data");
+#         serializer = Mos_serializer(self.get_mos(pk), data=requests.data);
+#         if serializer.is_valid():
+#             serializer.save();
+#             return Response(serializer.data, status=status.HTTP_201_CREATED);
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUESTS);
+#        
+#     def delete(self, requests, pk):
+#         if not self.get_mos(pk):
+#             return Response("No data");
+#         model = self.get_mos(pk);
+#         model.delete();
+#         return Response(status=status.HTTP_204_NO_CONTENT);
+#
+##========================================================================
+# Now we want to tell our application where to find the APIs.
+# We do this, first by creating a urls.py file. So let's do it.
+# In the same directory, create the file urls.py
+#
+# In urls.py, do
+#
+# from django.urls import re_path;
+# from .api import MosList, MosDetail;
+#
+# urlpattern = [re_path(r"^$", MosList.as_view(), name="mosebedisi_list")
+#              ,re_path(r"(?P<pk>\d+)/$", MosDetail.as_view(), name="mosebedisi_detail")
+#              ,
+#              ];
+#
+# ===================================================================================================
+# Go to the terminal.											
+# In the terminal, navigate to the project, that is,							
+#													
+# $ cd ZBN-Public/zbn1											
+# $ python manage.py runserver									
+# ```````````````````````````````````````````````````````````````````````````````````````````````````
+# In case there's already a django server running, you may get an error. You then			`
+# have to find the running server(s), and kill them. Do this:					`
+#													`
+# In the terminal											`
+#													`
+# $ ps aux | grep -i manage										`
+#													`
+# This will list all running servers. Second number from the left is the pid of			`
+# a particular server. So then identify the manage.py servers and kill them with			`
+# the command:												`
+#													`
+# $ kill -9 pid											`
+#													`
+# Where pid is the number from the left, corresponding to the particular server.			`
+# Also, see												`
+# https://stackoverflow.com/questions/880239/how-to-clear-the-port-when-restarting-django-runserver	`
+#````````````````````````````````````````````````````````````````````````````````````````````````````
+# PUSH THIS WORK INTO ZBN-Public REPOSITORY.
+# SEE APPENDIX A ABOVE.
+#=====================================================================================================
+#
+#
+#
+#

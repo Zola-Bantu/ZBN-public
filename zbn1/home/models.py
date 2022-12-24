@@ -9,6 +9,13 @@ RELATIONSHIP_STATUS_CHOICES = (
     ('WI', 'widowed')
     );
     
+MESSAGE_CHOICES = (
+    ('TE', 'text'),
+    ('VN', 'voice note'),
+    ('IM', 'image'),
+    ('VI', 'video'),
+    );
+    
 # Users table
 
 class Mosebedisi(models.Model):
@@ -22,7 +29,7 @@ class Mosebedisi(models.Model):
         return "%s" % (self.username);
 
 
-#Profile table
+#Profile table (one-to-one)
 
 class Profile(models.Model):
     mosebedisi = models.OneToOneField(
@@ -42,4 +49,36 @@ class Profile(models.Model):
     def __str__(self):
         return "%s" % (self.female);
 
+# Message table (one-to-many).
+class Message(models.Model):
+	profile = models.ForeignKey(Profile, on_delete=models.CASCADE);
+	message = models.FileField();
+	msg_type= models.CharField(
+        max_length=2,
+        choices=MESSAGE_CHOICES, 
+        default='TE'
+        );
+	signature = models.FileField();
+	pkn = models.CharField(max_length=150, default='0');	    # Public key n.
+	pke = models.CharField(max_length=50, default='0');	    # Public key e.
+	
+	def __str__(self):
+		return "%s" % (self.msg_type);
 
+# Group Table (not a relational table).
+class Group(models.Model):
+	name = models.CharField(max_length=50, blank=True, null=True);
+	image= models.FileField(blank=True, null=True);
+	story= models.CharField(max_length=1000, blank=True, null=True);
+	
+	def __str__(self):
+		return "%s" % (self.name);
+
+# Group member table (many-to-many).
+class Member(models.Model):
+	group = models.ManyToManyField(Group);
+	mosebedisi = models.ManyToManyField(Mosebedisi);
+	admin = models.BooleanField(default=True);
+	
+	def __str__(self):
+		return "%s" % (self.admin);
