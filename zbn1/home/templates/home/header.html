@@ -1,0 +1,304 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="{% static 'home/image/sisi_watu2.png' %}">
+
+    <title>Uhuru Protocol</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'home/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'home/css/main.css' %}" rel="stylesheet">
+
+<style>
+ /* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color:  #404040;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active, .accordion:hover {
+  background-color: #262626;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.panel {
+  padding: 0 18px;
+  background-color: #4d4d4d;
+  display: none;
+  overflow: hidden;
+}
+
+.accordion:after {
+  content: '\02795'; /* Unicode character for "plus" sign (+) */
+  font-size: 13px;
+  color: #777;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2796"; /* Unicode character for "minus" sign (-) */
+}
+
+ /* Container holding the image and the text */
+.container0 {
+  position: absolute;
+  text-align: center;
+  color: white;
+  left: 50%;
+  transform: translate(-50%, 0%);
+
+}
+
+
+/* Bottom left text */
+.aea {
+  position: absolute;
+  bottom: 27%;
+  left: 45%;
+}
+
+/* Top left text */
+.am {
+  position: absolute;
+  top: 45%;
+  left: 20%;
+}
+
+/* Top right text */
+.oc {
+  position: absolute;
+  top: 25%;
+  right: 10%;
+}
+
+
+/* Bottom right text */
+.ap {
+  position: absolute;
+  bottom: 17%;
+  left: 40%;
+}
+
+/* Bottom right text */
+.api {
+  position: absolute;
+  bottom: 12%;
+  left: 45%;
+}
+
+/* Top right text */
+.op {
+  position: absolute;
+  top: 40%;
+  right: 10%;
+}
+
+.opi {
+  position: absolute;
+  top: 20%;
+  right: 20%;
+}
+
+/* Centered text */
+.eap {
+  position: absolute;
+  bottom: 40%;
+  left: 55%;
+}
+
+/* Centered text */
+.eapi {
+  position: absolute;
+  bottom: 35%;
+  left: 55%;
+}
+
+/* Top left text */
+.nap {
+  position: absolute;
+  top: 40%;
+  left: 29%;
+}
+
+/* Top left text */
+.napi {
+  position: absolute;
+  top: 33%;
+  left: 34%;
+}
+
+/* Top left text */
+.sap {
+  position: absolute;
+  top: 55%;
+  left: 10%;
+}
+
+/* Top left text */
+.sapi {
+  position: absolute;
+  top: 60%;
+  left: 10%;
+}
+
+/* Top left text */
+.tpi {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+</style>
+
+    {% block extra_head %}
+    {% endblock %}
+  </head>
+  <body>
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">Our Principles</h4>
+              <p class="text-muted">Love, Purity and Justice.</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">More</h4>
+              <ul class="list-unstyled">
+                <li><a href="{% static 'home/doc/Constitution_en(unofficial).pdf' %}" class="text-white">Constitution</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="/accounts/logout/" class="text-white">Sign Out</a></li>
+                {% else %}
+                <li><a href="/accounts/login/" class="text-white">Login</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container d-flex justify-content-between">
+          <a href="/accounts/login" class="navbar-brand d-flex align-items-center">
+            <img src="{% static 'home/image/ZB.png' %}" alt="{% static 'home/image/af.png' %}" height="38">
+            <strong>Uhuru Protocol</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main role="main">
+    {% block body %}
+
+{% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissable fade show" role="alert">
+    {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+{% endif %}
+<!--
+ <div class="container0">
+   <img src="{% static 'afrika/image/alm5.gif' %}" alt="/w/extensions/wikihiero/img/hiero_H6.png?2f03d" style="width:330px">
+ </div>
+
+ <div class="container2" style="padding-left:4px">
+   <img src="{% static 'afrika/image/dendc.png' %}" alt="/w/extensions/wikihiero/img/hiero_H6.png?2f03d" style="width:330px;padding-top:8px">
+ </div>
+
+
+ <div class="container1">
+   <img src="{% static 'afrika/image/re.png' %}" alt="/w/extensions/wikihiero/img/hiero_H6.png?2f03d" width="360px" usemap="#afrika">
+   <map name="afrika">
+     <area shape="rect" coords="110,193,205,260" alt="af" href="/Afrika/">
+   </map>
+ </div>
+-->
+
+    {% block content %}
+    {% endblock %}
+    {% endblock %}
+    {% block extra_body %}
+    {% endblock %}
+
+    </main><br></br>
+
+    <footer class="container">
+      <p>&copy; 2020 Powered by <a href="https://nal1.pythonanywhere.com">Chama Cha Uhuru (CCU)</a></p>
+    </footer><br></br><br></br><br></br>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="{% static 'home/js/jquery-slim.min.js' %}"><\/script>')</script>
+    <script src="{% static 'home/js/popper.min.js' %}"></script>
+    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+
+<script>
+
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+
+</script>
+
+<script>
+function light(sw) {
+  var pic;
+  var title;
+  var stat;
+  if (sw == 0) {
+    pic = "{% static 'afrika/image/empty.png' %}",
+    title = "Afrika",
+    stat = "none"
+  } else {
+    pic = "{% static 'afrika/image/g3673.png' %}",
+    title = "Earth",
+    stat = "block"
+  }
+  document.getElementById('myImage').src = pic;
+  document.getElementById('myTitle').innerHTML = title;
+  document.getElementById('demo').style.display = stat;
+}
+</script>
+
+  </body>
+</html>
