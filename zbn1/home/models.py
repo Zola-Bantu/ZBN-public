@@ -37,14 +37,14 @@ class Profile(models.Model):
         on_delete=models.CASCADE,
         primary_key=True,
         );
-    picture = models.FileField();
+    picture = models.FileField(blank=True, null=True);
     female = models.BooleanField(default=True);
     Status = models.CharField(
         max_length=2,
         choices=RELATIONSHIP_STATUS_CHOICES, 
         default='SI'
         );
-    bio =  models.CharField(max_length=300, blank=True, null=True);
+    bio = models.CharField(max_length=300, blank=True, null=True);
 	
     def __str__(self):
         return "%s" % (self.female);
@@ -52,16 +52,16 @@ class Profile(models.Model):
 # Message table (one-to-many).
 class Message(models.Model):
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE);
-	message = models.FileField();
+	message = models.FileField(blank=True, null=True);
 	msg_type= models.CharField(
         max_length=2,
         choices=MESSAGE_CHOICES, 
         default='TE'
         );
-	signature = models.FileField();
+	signature = models.FileField(blank=True, null=True);
 	pkn = models.CharField(max_length=150, default='0');	    # Public key n.
 	pke = models.CharField(max_length=50, default='0');	    # Public key e.
-	
+
 	def __str__(self):
 		return "%s" % (self.msg_type);
 
@@ -70,7 +70,7 @@ class Group(models.Model):
 	name = models.CharField(max_length=50, blank=True, null=True);
 	image= models.FileField(blank=True, null=True);
 	story= models.CharField(max_length=1000, blank=True, null=True);
-	
+
 	def __str__(self):
 		return "%s" % (self.name);
 
@@ -79,6 +79,6 @@ class Member(models.Model):
 	group = models.ManyToManyField(Group);
 	mosebedisi = models.ManyToManyField(Mosebedisi);
 	admin = models.BooleanField(default=True);
-	
+
 	def __str__(self):
 		return "%s" % (self.admin);
