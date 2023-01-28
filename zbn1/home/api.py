@@ -67,7 +67,7 @@ class ProfileList(APIView): # Inherits from the APIView class.
 class ProfileDetail(APIView):
     def get_Profile(self, pk):
         try:
-            model = Profile.objects.get(id=pk);
+            model = Profile.objects.get(mosebedisi=pk);
             return model;
         except Exception as e:
             print(e);
