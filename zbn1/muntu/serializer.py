@@ -10,3 +10,8 @@ class Profile_serializer(serializers.ModelSerializer):
     class Meta:
         model = Profile;
         fields = "__all__";
+
+class Message_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = Message;
+        fields = "__all__";
