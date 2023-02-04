@@ -1,4 +1,4 @@
-{% extends 'home/header.html' %}
+{% extends 'muntu/header1.html' %}
 
 {% load staticfiles %}
 
@@ -6,7 +6,7 @@
 {% block content %}
 
  {% if user.is_authenticated %}
- <p>Welcome user.username</p>
+ <p>Welcome {{ user.username }}</p>
  {% else %}
  <p>Welcome to the Zola Bantu network</p>
  {% endif %}
@@ -32,14 +32,7 @@
       </div>
 
       <div class="col-lg-6">
-       <form method="post" action="{% url 'monyako' %}">
-        {% csrf_token %}
-        <input type="text" class="form-control" placeholder="Email" name="email" required><br>
-        <input type="text" class="form-control" placeholder="Phone Number" name="number" required><br>
-        <input type="text" class="form-control" placeholder="Subject" name="subject" required><br>
-        <textarea class="form-control" placeholder="Type Your Message Here..." name="message" required></textarea><br>
-        <button class="btn btn-primary" type="submit">Send</button>
-       </form><br>
+       <img src="static/muntu/image/{{ name }}" alt="{% static 'muntu/imag/sisi_watu2.png' %}" width="480">
       </div>
 
       <div class="col-lg-3">

@@ -37,12 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'home',
-    'rest_framework',
     ## Allauth
     'django.contrib.sites',
     'allauth',
     'allauth.account',
+    'rest_framework',
+    'entrance',
+    'muntu',
 ]
 
 SITE_ID = 1

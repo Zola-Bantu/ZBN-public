@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path, re_path, include;
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    re_path('^admin/', admin.site.urls),
     re_path(r'^accounts/', include('allauth.urls')),
     re_path(r'^api/rest-auth/account-confirm-email/(?P<key>[-:\w]+)/$',allauthemailconfirmation,
     name='account_confirm_email'),
-    path('api-auth/', include('rest_framework.urls')),
-    path('', include('home.urls')),
+    re_path('^api-auth/', include('rest_framework.urls')),
+    re_path('', include('muntu.urls')),
 ];
+
+

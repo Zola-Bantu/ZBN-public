@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{% static 'home/image/sisi_watu2.png' %}">
+    <link rel="icon" href="{% static 'muntu/image/sisi_watu2.png' %}">
 
     <title>Uhuru Protocol</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'home/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'muntu/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{% static 'home/css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'muntu/css/main.css' %}" rel="stylesheet">
 
 <style>
  /* Style the buttons that are used to open and close the accordion panel */
@@ -182,7 +182,7 @@
             <div class="col-sm-4 offset-md-1 py-4">
               <h4 class="text-white">More</h4>
               <ul class="list-unstyled">
-                <li><a href="{% static 'home/doc/Constitution_en(unofficial).pdf' %}" class="text-white">Constitution</a></li>
+                <li><a href="{% static 'muntu/doc/Constitution_en(unofficial).pdf' %}" class="text-white">Constitution</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="/accounts/logout/" class="text-white">Sign Out</a></li>
                 {% else %}
@@ -196,7 +196,7 @@
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
           <a href="/accounts/login" class="navbar-brand d-flex align-items-center">
-            <img src="{% static 'home/image/ZB.png' %}" alt="{% static 'home/image/af.png' %}" height="38">
+            <img src="{% static 'muntu/image/ZB.png' %}" alt="{% static 'muntu/image/af.png' %}" height="38">
             <strong>Uhuru Protocol</strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -253,9 +253,9 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="{% static 'home/js/jquery-slim.min.js' %}"><\/script>')</script>
-    <script src="{% static 'home/js/popper.min.js' %}"></script>
-    <script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+    <script>window.jQuery || document.write('<script src="{% static 'muntu/js/jquery-slim.min.js' %}"><\/script>')</script>
+    <script src="{% static 'muntu/js/popper.min.js' %}"></script>
+    <script src="{% static 'muntu/js/bootstrap.min.js' %}"></script>
 
 <script>
 
@@ -286,11 +286,11 @@ function light(sw) {
   var title;
   var stat;
   if (sw == 0) {
-    pic = "{% static 'afrika/image/empty.png' %}",
+    pic = "{% static 'muntu/image/empty.png' %}",
     title = "Afrika",
     stat = "none"
   } else {
-    pic = "{% static 'afrika/image/g3673.png' %}",
+    pic = "{% static 'muntu/image/g3673.png' %}",
     title = "Earth",
     stat = "block"
   }
