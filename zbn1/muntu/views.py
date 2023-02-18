@@ -1,12 +1,10 @@
 from django.shortcuts import render
-from .utils import Challenge
+
 # Create your views here.
 
-def monyako(request):
-    chal = Challenge()
-    name = chal.generate()
+def sitemap(request):
     context = {
-    	"name": name + ".png"
+	
     }
-    template = 'muntu/monyako.html'
+    template = 'muntu/map.html'
     return render(request, template, context)

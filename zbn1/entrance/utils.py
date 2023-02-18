@@ -39,6 +39,6 @@ class Challenge:
 		#print(self.name) #For Debugging
 		
 		qr = pyqrcode.create(self.data)
-		qr.png("muntu/static/muntu/image/%s.png" % (self.name), scale=10)
+		qr.png("entrance/static/entrance/image/%s.png" % (self.name), scale=10)
 		return self.name
 
