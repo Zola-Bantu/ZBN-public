@@ -1,10 +1,15 @@
 from django.shortcuts import render
-from .utils import Challenge
+from .utils  import Challenge
+from .models import Qrcode
 # Create your views here.
 
 def secure(request):
     chal = Challenge()
-    name = chal.generate()
+    name = chal.generate() 
+    qrcode = Qrcode.objects.create(
+        name = name , 
+        path = 'entrance/static/entrance/image/' ,
+    )
     context = {
     	"name": name + ".png"
     }
