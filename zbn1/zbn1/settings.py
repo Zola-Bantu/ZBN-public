@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'entrance',
     'muntu',
+    'kintu',
 ]
 
 SITE_ID = 1
