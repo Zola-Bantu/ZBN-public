@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'entrance',
     'muntu',
     'kintu',
+    'hantu',
 ]
 
 SITE_ID = 1
