@@ -1,7 +1,11 @@
-from . import views
+from . import views;
 from django.urls import re_path, include;
 from .api import MosList, MosDetail, ProfileList, ProfileDetail,MessageDetail,MessageList, GroupDetail, GroupList, MemberDetail, MemberList
-
+               #, NeedList, NeedDetail, MileStoneList, MileStoneDetail, DependencyList, DependencyDetail
+               #, ResponsibilityList, ResponsibilityDetail, CandidatesList, CandidatesDetail
+               #, QualificationRequirementsList, QualificationRequirementsDetail, AchievementList, AchievementDetail
+               #, AchieverList, AchieverDetail;
+               
 urlpatterns = [re_path(r"^$", views.sitemap, name="sitemap"),
             re_path(r"^mos/$", MosList.as_view(), name="mosebedisi_list"),
             re_path(r"^mos/(?P<pk>\d+)/$", MosDetail.as_view(), name="mosebedisi_detail"),
@@ -13,5 +17,21 @@ urlpatterns = [re_path(r"^$", views.sitemap, name="sitemap"),
             re_path(r"^grp/(?P<pk>\d+)/$", GroupDetail.as_view(), name="group_detail"),
             re_path(r"^mem/$", MemberList.as_view(), name="member_list"),
             re_path(r"^mem/(?P<pk>\d+)/$", MemberDetail.as_view(), name="member_detail"),
+            #re_path(r"^need/$", NeedList.as_view(), name="need_list"),
+            #re_path(r"^need/(?P<pk>\d+)/$", NeedDetail.as_view(), name="need_detail"),
+            #re_path(r"^mst/$", MileStoneList.as_view(), name="miletone_list"),
+            #re_path(r"^mst/(?P<pk>\d+)/$", MileStoneDetail.as_view(), name="miletone_detail"),
+            #re_path(r"^dep/$", DependencyList.as_view(), name="dependency_list"),
+            #re_path(r"^dep/(?P<pk>\d+)/$", DependencyDetail.as_view(), name="dependency_detail"),
+            #re_path(r"^resp/$", ResponsibilityList.as_view(), name="responsibility_list"),
+            #re_path(r"^resp/(?P<pk>\d+)/$", ResponsibilityDetail.as_view(), name="responsibility_detail"),
+            #re_path(r"^cand/$", CandidatesList.as_view(), name="candidates_list"),
+            #re_path(r"^cand/(?P<pk>\d+)/$", CandidatesDetail.as_view(), name="candidates_detail"),
+            #re_path(r"^qreq/$", QualificationRequirementsList.as_view(), name="qualificationrequirements_list"),
+            #re_path(r"^qreq/(?P<pk>\d+)/$", QualificationRequirementsDetail.as_view(), name="qualificationrequirements_detail"),
+            #re_path(r"^ach/$", AchievementList.as_view(), name="achievement_list"),
+            #re_path(r"^ach/(?P<pk>\d+)/$", AchievementDetail.as_view(), name="achievement_detail"),
+            #re_path(r"^achr/$", AchieverList.as_view(), name="achiever_list"),
+            #re_path(r"^achr/(?P<pk>\d+)/$", AchieverDetail.as_view(), name="achiever_detail"),
             re_path(r"^secure/", include('entrance.urls')), #login page
             ];

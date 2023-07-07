@@ -229,3 +229,41 @@ class MemberDetail(APIView):
         model = self.get_Member(pk);
         model.delete();
         return Response(status=status.HTTP_204_NO_CONTENT);
+
+"""
+class NeedList(APIView):
+
+class NeedDetail(APIView):
+
+class MileStoneList(APIView):
+
+class MileStoneDetail(APIView):
+
+class DependencyList(APIView):
+
+class DependencyDetail(APIView):
+
+class ResponsibilityList(APIView):
+
+class ResponsibilityDetail(APIView):
+
+class CandidatesList(APIView):
+
+class CandidatesDetail(APIView):
+
+class QualificationRequirementsList(APIView):
+
+class QualificationRequirementsDetail(APIView):
+
+class AchievementList(APIView):
+
+class AchievementDetail(APIView):
+
+class AchieverList(APIView):
+
+class AchieverDetail(APIView):
+
+"""
+
+
+
