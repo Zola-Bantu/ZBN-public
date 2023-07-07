@@ -31,7 +31,8 @@ from django.utils.encoding import force_bytes, force_str
 MAX_USERNAME_SUFFIX_LENGTH = 7
 USERNAME_SUFFIX_CHARS = (
     [string.digits] * 4 +
-    [string.ascii_letters] * (MAX_USERNAME_SUFFIX_LENGTH - 4))
+    [string.ascii_letters] * (MAX_USERNAME_SUFFIX_LENGTH - 4)
+    )
 
 
 def _generate_unique_username_base(txts, regex=None):
@@ -276,7 +277,8 @@ def build_absolute_uri(request, location, protocol=None):
             uri = '{proto}://{domain}{url}'.format(
                 proto=account_settings.DEFAULT_HTTP_PROTOCOL,
                 domain=site.domain,
-                url=location)
+                url=location
+                )
         else:
             uri = location
     else:
