@@ -1,7 +1,5 @@
 from django.contrib import admin;
-from .models import Mosebedisi, Profile, Message, Group, Member, Need, MileStone
-                  , Dependency, Responsibility, Candidates, QualificationRequirements
-                  , Achievement, Achiever;
+from .models import Mosebedisi, Profile, Message, Group, Member, Need, MileStone, Responsibility, Candidates, QualificationRequirements, Achievement, Achiever; #, Dependency
 
 # Register your models here.
 admin.site.register(Mosebedisi);
@@ -11,7 +9,7 @@ admin.site.register(Group);
 admin.site.register(Member);
 admin.site.register(Need);
 admin.site.register(MileStone);
-admin.site.register(Dependency);
+#admin.site.register(Dependency);
 admin.site.register(Responsibility);
 admin.site.register(Candidates);
 admin.site.register(QualificationRequirements);

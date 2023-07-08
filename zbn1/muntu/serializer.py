@@ -35,12 +35,12 @@ class MileStone_serializer(serializers.ModelSerializer):
     class Meta:
         model = MileStone;
         fields = "__all__";
-        
+"""
 class Dependency_serializer(serializers.ModelSerializer):
     class Meta:
         model = Dependency;
         fields = "__all__";
-        
+"""
 class Responsibility_serializer(serializers.ModelSerializer):
     class Meta:
         model = Responsibility;

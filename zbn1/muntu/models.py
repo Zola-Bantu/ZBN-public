@@ -1,4 +1,5 @@
-from django.db import models
+from django.db import models;
+import datetime;
 
 # Create your models here.
 
@@ -94,8 +95,10 @@ class Group(models.Model):
 	name = models.CharField(max_length=50, blank=True, null=True);
 	image= models.FileField(blank=True, null=True);
 	story= models.CharField(max_length=1000, blank=True, null=True);
-	group_type= models.CharField(max_length=3, choices=GROUP_TYPES
-	default=NUCLEARFAM);
+	group_type= models.CharField( max_length=3
+	                            , choices=GROUP_TYPES
+	                            , default=NUCLEARFAM
+	                            );
 	closed = models.BooleanField(default=True);
 
 	def __str__(self):
@@ -103,6 +106,9 @@ class Group(models.Model):
 
 # Group member table (many-to-many).
 class Member(models.Model):
+	"""
+	A table relating users to the groups they are a part of and groups to their members.
+	"""
 	group = models.ManyToManyField(Group);
 	mosebedisi = models.ManyToManyField(Mosebedisi);
 	admin = models.BooleanField(default=True);
@@ -126,7 +132,7 @@ class Need(models.Model):
 	need = models.CharField(max_length=100, blank=True, null=True);
 	need_type = models.CharField(max_length=2, choices=NEED_TYPES, default=PHYSICAL);
 	group = models.ForeignKey(to=Group, on_delete=models.CASCADE);
-	due_date = models.DateField(auto_now_add = True);
+	due_date = models.DateField(default = datetime.date(2023,7,8));
 	
 	def __str__(self):
 		return "%s" % (self.need);
@@ -139,24 +145,24 @@ class MileStone(models.Model):
 	milestone = models.CharField(max_length=100, blank=True, null=True);
 	need = models.ForeignKey(to=Need, on_delete=models.CASCADE);
 	description = models.CharField(max_length=1000, blank=True, null=True);
-	dependant = models.BooleanField(default=True);
-	due_date = models.DateField(auto_now_add=True);
+	dependant = models.BooleanField(default=False);
+	due_date = models.DateField(default=datetime.date(2023,7,8));
 	
 	def __str__(self):
 		return "%s" % (self.milestone);
-
+"""
 class Dependency(models.Model):
-	"""
-	(relation : one to one)
-	A table relating all the dependent milestones to the milestone they are dependent on.
-	"""
-	dependant_milestone = models.OneToOneField(to=MileStone);# Review this relationship*
-	milestone = models.OneToOneField(to=MileStone);
-	completable = models.BooleanField(default=True);
+	
+	#(relation : one to one)
+	#A table relating all the dependent milestones to the milestone they are dependent on.
+	
+	dependant_milestone = models.ManyToManyField(to=MileStone);
+	milestone = models.ManyToManyField(to=MileStone);
+	completable = models.BooleanField(default=False);
 	
 	def __str__(self):
 		return "%s" % (self.completable);
-
+"""
 class Responsibility(models.Model):
 	"""
 	(relational: many to many)
@@ -181,12 +187,23 @@ class Candidates(models.Model):
 	an individual to be given the responsibility of coordinating the provision for 
 	a milestone of a need.
 	"""
-	memeber = models.ManyToManyField(to=Member);
+	member = models.ManyToManyField(to=Member);
 	milestone = models.ManyToManyField(to=MileStone);
 	qualified = models.BooleanField(default=False);
 	
 	def __str__(self):
 		return "%s" % (self.qualified);
+
+class Achievement(models.Model):
+	"""
+	(non-relational)
+	A table of all possible achievements.
+	"""
+	achievement = models.CharField(max_length=100, blank=True, null=True);
+	description = models.CharField(max_length=1000, blank=True, null=True);
+	
+	def __str__(self):
+		return "%s" % (self.achievement);
 
 class QualificationRequirements(models.Model):
 	"""
@@ -198,24 +215,13 @@ class QualificationRequirements(models.Model):
 	needs of a group are vital and cannot be entrusted to an incompetent 
 	individual or incompetent individuals, lest disaster ensue.
 	"""
+	name = models.CharField(max_length=20, blank=True, null=True);
 	milestone = models.ManyToManyField(to=MileStone);
 	achievement = models.ManyToManyField(to=Achievement);
-	competent = models.BooleanField(default=False); # added: please review*
 	
 	def __str__(self):
-		return "%s" % (self.competent);
-
-class Achievement(models.Model):
-	"""
-	(non-relational)
-	A table of all possible achievements.
-	"""
-	achievement = models.CharField(max_length=100, blank=True, null=True);
-	description = models.CharField(max_length=1000, blank=True, null=True);
-	
-	def __str__(self):
-		return "%s" % (self.description);
-
+		return "%s" % (self.name);
+		
 class Achiever(models.Model):
 	"""
 	(relational: many to many)
@@ -224,10 +230,14 @@ class Achiever(models.Model):
 	profile = models.ManyToManyField(to=Profile);
 	achievement = models.ManyToManyField(to=Achievement);
 	date_achieved = models.DateField(auto_now_add=True);
-	location_latitude = models.CharField(max_length=6, blank=True, null=True);
-	location_longitude = models.CharField(max_length=6, blank=True, null=True);
-	verified_pkn = models.CharField(max_length=150, default='0');# added: please review*
-	verifier_pke = models.CharField(max_length=50, default='0');# added: please review*
-	
+	location_latitude = models.CharField(max_length=30, blank=True, null=True);
+	location_longitude = models.CharField(max_length=30, blank=True, null=True);
+	verifier_pkn = models.CharField(max_length=50, default='0');
+	verifier_pke = models.CharField(max_length=50, default='0');
+	verified = models.BooleanField(default=False);
+
 	def __str__(self):
 		return "%s" % (self.date_achieved);
+		
+		
+		

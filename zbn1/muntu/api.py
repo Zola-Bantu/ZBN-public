@@ -239,9 +239,9 @@ class MileStoneList(APIView):
 
 class MileStoneDetail(APIView):
 
-class DependencyList(APIView):
+#class DependencyList(APIView):
 
-class DependencyDetail(APIView):
+#class DependencyDetail(APIView):
 
 class ResponsibilityList(APIView):
 
