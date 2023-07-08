@@ -25,12 +25,12 @@ class Member_serializer(serializers.ModelSerializer):
     class Meta:
         model = Member;
         fields = "__all__";
-        
+
 class Need_serializer(serializers.ModelSerializer):
     class Meta:
         model = Need;
         fields = "__all__";
-        
+
 class MileStone_serializer(serializers.ModelSerializer):
     class Meta:
         model = MileStone;
@@ -45,25 +45,25 @@ class Responsibility_serializer(serializers.ModelSerializer):
     class Meta:
         model = Responsibility;
         fields = "__all__";
-        
+
 class Candidates_serializer(serializers.ModelSerializer):
     class Meta:
         model = Candidates;
         fields = "__all__";
-        
-class QualificationRequirements_serializer(serializers.ModelSerializer):
-    class Meta:
-        model = QualificationRequirements;
-        fields = "__all__";
-        
+
 class Achievement_serializer(serializers.ModelSerializer):
     class Meta:
         model = Achievement;
         fields = "__all__";
-        
+
 class Achiever_serializer(serializers.ModelSerializer):
     class Meta:
         model = Achiever;
         fields = "__all__";
-        
+
+class QualificationRequirements_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = QualificationRequirements;
+        fields = "__all__";
+
 

@@ -204,23 +204,6 @@ class Achievement(models.Model):
 	
 	def __str__(self):
 		return "%s" % (self.achievement);
-
-class QualificationRequirements(models.Model):
-	"""
-	(relational: many to many)
-	A table relating achievements required for an individual to be given the 
-	responsibility to coordinate the provision of a need (or needs) that the 
-	group has.
-	NOTE: An achievement is a track record that indicates competency.  The 
-	needs of a group are vital and cannot be entrusted to an incompetent 
-	individual or incompetent individuals, lest disaster ensue.
-	"""
-	name = models.CharField(max_length=20, blank=True, null=True);
-	milestone = models.ManyToManyField(to=MileStone);
-	achievement = models.ManyToManyField(to=Achievement);
-	
-	def __str__(self):
-		return "%s" % (self.name);
 		
 class Achiever(models.Model):
 	"""
@@ -238,6 +221,25 @@ class Achiever(models.Model):
 
 	def __str__(self):
 		return "%s" % (self.date_achieved);
-		
-		
-		
+
+class QualificationRequirements(models.Model):
+	"""
+	(relational: many to many)
+	A table relating achievements required for an individual to be given the 
+	responsibility to coordinate the provision of a need (or needs) that the 
+	group has.
+	NOTE: An achievement is a track record that indicates competency.  The 
+	needs of a group are vital and cannot be entrusted to an incompetent 
+	individual or incompetent individuals, lest disaster ensue.
+	"""
+	name = models.CharField(max_length=20, blank=True, null=True);
+	milestone = models.ManyToManyField(to=MileStone);
+	achievement = models.ManyToManyField(to=Achievement);
+	
+	def __str__(self):
+		return "%s" % (self.name);
+
+
+
+
+

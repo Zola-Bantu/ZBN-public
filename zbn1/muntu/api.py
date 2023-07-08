@@ -230,40 +230,318 @@ class MemberDetail(APIView):
         model.delete();
         return Response(status=status.HTTP_204_NO_CONTENT);
 
-"""
 class NeedList(APIView):
+    def get(self, request):
+        model = Need.objects.all();
+        serializer = Need_serializer(model, many=True);
+        return Response(serializer.data);
+
+    def post(self, request):
+        serializer = Need_serializer(data=request.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Reponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST);
 
 class NeedDetail(APIView):
+    def get_Need(self, pk):
+        try:
+            model = Need.objects.get(id=pk);
+            return model;
+        except Exception as e:
+            print(e);
+            return;
+    
+    def get(self, requests, pk):
+        if not self.get_Need(pk):
+            return Response("No data");
+        serializer = Need_serializer(self.get_Need(pk));
+        return Response(serializer.data);
+        
+    def put(self, requests, pk):
+        if not self.get_Need(pk):
+            return Response("No data");
+        serializer = Need_serializer(self.get_Need(pk), data=requests.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUESTS);
+        
+    def delete(self, requests, pk):
+        if not self.get_Need(pk):
+            return Response("No data");
+        model = self.Need(pk);
+        model.delete();
+        return Response(status=status.HTTP_204_NO_CONTENT);
 
 class MileStoneList(APIView):
+    def get(self, request):
+        model = MileStone.objects.all();
+        serializer = MileStone_serializer(model, many=True);
+        return Response(serializer.data);
+
+    def post(self, request):
+        serializer = MileStone_serializer(data=request.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Reponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST);
 
 class MileStoneDetail(APIView):
+    def get_MileStone(self, pk):
+        try:
+            model = MileStone.objects.get(id=pk);
+            return model;
+        except Exception as e:
+            print(e);
+            return;
+    
+    def get(self, requests, pk):
+        if not self.get_MileStone(pk):
+            return Response("No data");
+        serializer = MileStone_serializer(self.get_MileStone(pk));
+        return Response(serializer.data);
+        
+    def put(self, requests, pk):
+        if not self.get_MileStone(pk):
+            return Response("No data");
+        serializer = MileStone_serializer(self.get_MileStone(pk), data=requests.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUESTS);
+        
+    def delete(self, requests, pk):
+        if not self.get_MileStone(pk):
+            return Response("No data");
+        model = self.get_MileStone(pk);
+        model.delete();
+        return Response(status=status.HTTP_204_NO_CONTENT);
 
 #class DependencyList(APIView):
 
 #class DependencyDetail(APIView):
 
 class ResponsibilityList(APIView):
+    def get(self, request):
+        model = Responsibility.objects.all();
+        serializer = Responsibility_serializer(model, many=True);
+        return Response(serializer.data);
+
+    def post(self, request):
+        serializer = Responsibility_serializer(data=request.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Reponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST);
 
 class ResponsibilityDetail(APIView):
+    def get_Responsibility(self, pk):
+        try:
+            model = Responsibility.objects.get(id=pk);
+            return model;
+        except Exception as e:
+            print(e);
+            return;
+    
+    def get(self, requests, pk):
+        if not self.get_Responsibility(pk):
+            return Response("No data");
+        serializer = Responsibility_serializer(self.get_Responsibility(pk));
+        return Response(serializer.data);
+        
+    def put(self, requests, pk):
+        if not self.get_Responsibility(pk):
+            return Response("No data");
+        serializer = Responsibility_serializer(self.get_Responsibility(pk), data=requests.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUESTS);
+        
+    def delete(self, requests, pk):
+        if not self.get_Responsibility(pk):
+            return Response("No data");
+        model = self.get_Responsibility(pk);
+        model.delete();
+        return Response(status=status.HTTP_204_NO_CONTENT);
 
 class CandidatesList(APIView):
+    def get(self, request):
+        model = Candidates.objects.all();
+        serializer = Candidates_serializer(model, many=True);
+        return Response(serializer.data);
+
+    def post(self, request):
+        serializer = Candidates_serializer(data=request.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Reponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST);
 
 class CandidatesDetail(APIView):
-
-class QualificationRequirementsList(APIView):
-
-class QualificationRequirementsDetail(APIView):
+    def get_Candidates(self, pk):
+        try:
+            model = Candidates.objects.get(id=pk);
+            return model;
+        except Exception as e:
+            print(e);
+            return;
+    
+    def get(self, requests, pk):
+        if not self.get_Candidates(pk):
+            return Response("No data");
+        serializer = Candidates_serializer(self.get_Candidates(pk));
+        return Response(serializer.data);
+        
+    def put(self, requests, pk):
+        if not self.get_Candidates(pk):
+            return Response("No data");
+        serializer = Candidates_serializer(self.get_Candidates(pk), data=requests.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUESTS);
+        
+    def delete(self, requests, pk):
+        if not self.get_Candidates(pk):
+            return Response("No data");
+        model = self.get_Candidates(pk);
+        model.delete();
+        return Response(status=status.HTTP_204_NO_CONTENT);
 
 class AchievementList(APIView):
+    def get(self, request):
+        model = Achievement.objects.all();
+        serializer = Achievement_serializer(model, many=True);
+        return Response(serializer.data);
+
+    def post(self, request):
+        serializer = Achievement_serializer(data=request.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Reponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST);
 
 class AchievementDetail(APIView):
+    def get_Achievement(self, pk):
+        try:
+            model = Achievement.objects.get(id=pk);
+            return model;
+        except Exception as e:
+            print(e);
+            return;
+    
+    def get(self, requests, pk):
+        if not self.get_Achievement(pk):
+            return Response("No data");
+        serializer = Achievement_serializer(self.get_Achievement(pk));
+        return Response(serializer.data);
+        
+    def put(self, requests, pk):
+        if not self.get_Achievement(pk):
+            return Response("No data");
+        serializer = Achievement_serializer(self.get_Achievement(pk), data=requests.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUESTS);
+        
+    def delete(self, requests, pk):
+        if not self.get_Achievement(pk):
+            return Response("No data");
+        model = self.get_Achievement(pk);
+        model.delete();
+        return Response(status=status.HTTP_204_NO_CONTENT);
 
 class AchieverList(APIView):
+    def get(self, request):
+        model = Achiever.objects.all();
+        serializer = Achiever_serializer(model, many=True);
+        return Response(serializer.data);
+
+    def post(self, request):
+        serializer = Achiever_serializer(data=request.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Reponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST);
 
 class AchieverDetail(APIView):
+    def get_Achiever(self, pk):
+        try:
+            model = Achiever.objects.get(id=pk);
+            return model;
+        except Exception as e:
+            print(e);
+            return;
+    
+    def get(self, requests, pk):
+        if not self.get_Achiever(pk):
+            return Response("No data");
+        serializer = Achiever_serializer(self.get_Achiever(pk));
+        return Response(serializer.data);
+        
+    def put(self, requests, pk):
+        if not self.get_Achiever(pk):
+            return Response("No data");
+        serializer = Achiever_serializer(self.get_Achiever(pk), data=requests.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUESTS);
+        
+    def delete(self, requests, pk):
+        if not self.get_Achiever(pk):
+            return Response("No data");
+        model = self.get_Achiever(pk);
+        model.delete();
+        return Response(status=status.HTTP_204_NO_CONTENT);
 
-"""
+class QualificationRequirementsList(APIView):
+    def get(self, request):
+        model = QualificationRequirements.objects.all();
+        serializer = QualificationRequirements_serializer(model, many=True);
+        return Response(serializer.data);
+
+    def post(self, request):
+        serializer = QualificationRequirements_serializer(data=request.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Reponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST);
+
+class QualificationRequirementsDetail(APIView):
+    def get_QualificationRequirements(self, pk):
+        try:
+            model = QualificationRequirements.objects.get(id=pk);
+            return model;
+        except Exception as e:
+            print(e);
+            return;
+    
+    def get(self, requests, pk):
+        if not self.get_QualificationRequirements(pk):
+            return Response("No data");
+        serializer = QualificationRequirements_serializer(self.get_QualificationRequirements(pk));
+        return Response(serializer.data);
+        
+    def put(self, requests, pk):
+        if not self.get_QualificationRequirements(pk):
+            return Response("No data");
+        serializer = QualificationRequirements_serializer(self.get_QualificationRequirements(pk), data=requests.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUESTS);
+        
+    def delete(self, requests, pk):
+        if not self.get_QualificationRequirements(pk):
+            return Response("No data");
+        model = self.get_QualificationRequirements(pk);
+        model.delete();
+        return Response(status=status.HTTP_204_NO_CONTENT);
+
 
 
 
