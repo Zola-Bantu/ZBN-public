@@ -66,4 +66,13 @@ class QualificationRequirements_serializer(serializers.ModelSerializer):
         model = QualificationRequirements;
         fields = "__all__";
 
+class LTime_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = LTime;
+        fields = "__all__";
 
+
+class Header_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = Header;
+        fields = "__all__";

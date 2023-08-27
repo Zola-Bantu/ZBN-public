@@ -544,4 +544,93 @@ class QualificationRequirementsDetail(APIView):
 
 
 
+class LTimeList(APIView):
+    def get(self, request):
+        model = LTime.objects.all();
+        serializer = LTime_serializer(model, many=True);
+        return Response(serializer.data);
+
+    def post(self, request):
+        serializer = LTime_serializer(data=request.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Reponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST);
+
+class LTimeDetail(APIView):
+    def get_LTime(self, pk):
+        try:
+            model = LTime.objects.get(id=pk);
+            return model;
+        except Exception as e:
+            print(e);
+            return;
+    
+    def get(self, requests, pk):
+        if not self.get_LTime(pk):
+            return Response("No data");
+        serializer = LTime_serializer(self.get_LTime(pk));
+        return Response(serializer.data);
+        
+    def put(self, requests, pk):
+        if not self.get_LTime(pk):
+            return Response("No data");
+        serializer = LTime_serializer(self.get_LTime(pk), data=requests.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUESTS);
+        
+    def delete(self, requests, pk):
+        if not self.get_LTime(pk):
+            return Response("No data");
+        model = self.get_LTime(pk);
+        model.delete();
+        return Response(status=status.HTTP_204_NO_CONTENT);
+
+
+
+class HeaderList(APIView):
+    def get(self, request):
+        model = Header.objects.all();
+        serializer = Header_serializer(model, many=True);
+        return Response(serializer.data);
+
+    def post(self, request):
+        serializer = Header_serializer(data=request.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Reponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST);
+
+class HeaderDetail(APIView):
+    def get_Header(self, pk):
+        try:
+            model = Header.objects.get(id=pk);
+            return model;
+        except Exception as e:
+            print(e);
+            return;
+    
+    def get(self, requests, pk):
+        if not self.get_Header(pk):
+            return Response("No data");
+        serializer = Header_serializer(self.get_Header(pk));
+        return Response(serializer.data);
+        
+    def put(self, requests, pk):
+        if not self.get_Header(pk):
+            return Response("No data");
+        serializer = Header_serializer(self.get_Header(pk), data=requests.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUESTS);
+        
+    def delete(self, requests, pk):
+        if not self.get_Header(pk):
+            return Response("No data");
+        model = self.get_Header(pk);
+        model.delete();
+        return Response(status=status.HTTP_204_NO_CONTENT);
 

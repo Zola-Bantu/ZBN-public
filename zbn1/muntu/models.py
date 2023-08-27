@@ -61,7 +61,7 @@ class Message(models.Model):
         choices=MESSAGE_CHOICES, 
         default='TE'
         );
-	signature = models.FileField(blank=True, null=True);
+	signature = models.CharField(max_langth=50, blank=True, null=True);
 	pkn = models.CharField(max_length=150, default='0');	    # Public key n.
 	pke = models.CharField(max_length=50, default='0');	    # Public key e.
 
@@ -239,7 +239,41 @@ class QualificationRequirements(models.Model):
 	def __str__(self):
 		return "%s" % (self.name);
 
+class LTime(models.Model):
+	"""
+		Many-to-many
+	"""
+	CLOCK_IN = "CI";
+	CLOCK_OUT = "CO";
+	LUNCH_START = "LS";
+	LUNCH_END = "LE";
+	STATUS_OPTIONS = (
+		(CLOCK_IN, "Clock In"),
+		(CLOCK_OUT, "Clock Out"),
+		(LUNCH_START, "Lunch Start"),
+		(LUNCH_END "Lunch End"),
+	);
+	
+	time_stamp = models.CharField(max_length=15, blank=True, null=True);
+	status = models.CharField(max_length=2, choices=STATUS_OPTIONS, default=CLOCK_OUT);
+	hashKey = models.CharField(max_length=100, blank=True, null=True);
+	signature = models.CharField(max_length=50, blank=True, null=True);
+	mosebedisi = models.ManyToManyField(to=Mosebedisi);
+	
+	def __str__(self):
+		 return "%s"  % (self.time_stamp);
 
-
-
+class Header(models.Model):
+	"""
+		Immutable
+	"""
+	nounce = models.CharField(max_length=100, blank=True, null=True);
+	prev_hash = models.CharField(max_length=100, blank=True, null=True);
+	hashKey = models.CharField(max_length=100, blank=True, null=True);
+	signature = models.CharField(max_length=50, blank=True, null=True);
+	pkn = models.CharField(max_length=150, default='0');
+	pke = models.CharField(max_length=50, default='0';
+	
+	def __str__(self):
+		return "%s" % (self.nounce);
 

@@ -24,6 +24,7 @@ urlpatterns = [
     name='account_confirm_email'),
     re_path('^api-auth/', include('rest_framework.urls')),
     re_path('', include('muntu.urls')),
+    re_path('', include('hantu.urls')),
 ];
 
 

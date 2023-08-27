@@ -1,6 +1,6 @@
 from . import views;
 from django.urls import re_path, include;
-from .api import MosList, MosDetail, ProfileList, ProfileDetail,MessageDetail,MessageList, GroupDetail, GroupList, MemberDetail, MemberList, NeedList, NeedDetail, MileStoneList, MileStoneDetail, ResponsibilityList, ResponsibilityDetail, CandidatesList, CandidatesDetail, AchievementList, AchievementDetail, AchieverList, AchieverDetail, QualificationRequirementsList, QualificationRequirementsDetail; #, DependencyList, DependencyDetail
+from .api import MosList, MosDetail, ProfileList, ProfileDetail,MessageDetail,MessageList, GroupDetail, GroupList, MemberDetail, MemberList, NeedList, NeedDetail, MileStoneList, MileStoneDetail, ResponsibilityList, ResponsibilityDetail, CandidatesList, CandidatesDetail, AchievementList, AchievementDetail, AchieverList, AchieverDetail, QualificationRequirementsList, QualificationRequirementsDetail, LTime, Header; #, DependencyList, DependencyDetail
                
 urlpatterns = [re_path(r"^$", views.sitemap, name="sitemap"),
             re_path(r"^mos/$", MosList.as_view(), name="mosebedisi_list"),
@@ -29,5 +29,9 @@ urlpatterns = [re_path(r"^$", views.sitemap, name="sitemap"),
             re_path(r"^achr/(?P<pk>\d+)/$", AchieverDetail.as_view(), name="achiever_detail"),
             re_path(r"^qreq/$", QualificationRequirementsList.as_view(), name="qualificationrequirements_list"),
             re_path(r"^qreq/(?P<pk>\d+)/$", QualificationRequirementsDetail.as_view(), name="qualificationrequirements_detail"),
+            re_path(r"^qreq/$", LTimeList.as_view(), name="ltime_list"),
+            re_path(r"^qreq/(?P<pk>\d+)/$", LTimeDetail.as_view(), name="ltime_detail"),
+            re_path(r"^qreq/$", HeaderList.as_view(), name="header_list"),
+            re_path(r"^qreq/(?P<pk>\d+)/$", HeaderDetail.as_view(), name="header_detail"),
             re_path(r"^secure/", include('entrance.urls')), #login page
             ];
