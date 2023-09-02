@@ -7,28 +7,40 @@ class Account(models.Model):
 	"""
 	pkn = models.CharField(max_length=150, default='0');	    # Public key n.
 	pke = models.CharField(max_length=50, default='0');	    # Public key e.
-	last_transaction = models.OneToOneField(Transaction
-		, on_delete=models.CASCADE
-		, primary_key=True,
-       	 );
+	verified = models.BooleanField(default=False);
+	
 	def __str__(self):
-		return "%s" % (self.last_transaction);
+		return "%s" % (self.verified);
 
-class Transaction(models.Model):
+class Security(models.Model):
+	"""
+		Here we will keep vital security information any activity outside these zones 
+		will trigger an alert, verification and be followed in on.
+	"""
+	account = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True);
+	known_country = models.CharField(max_length=100, blank=True, null=True);
+	known_region = models.CharField(max_length=100, blank=True, null=True);
+	known_city = models.CharField(max_length=100, blank=True, null=True);
+	
+	def __str__(self):
+		return "%s" % (self.verified);
+	
+
+class Payment(models.Model):
 	"""
 		Immutable.
 		Actually many-to-many, may need to come back for relook at
 		'sender' and 'receiver'		
 	"""
-	sender = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True);
-	receiver = models.OneToOneField(Account, on_delete=models.CASCADE, primary_key=True);
+	sender = models.ManyToManyField(Account);
+	receiver = models.ManyToManyField(Account, related_name="reciever");
 	amount = models.CharField(max_length=100, blank=True, null=True);
-	utxo = models.CharField(max_length=100, blank=True, null=True);
+	upo = models.CharField(max_length=100, blank=True, null=True); #Unspent payment output
 	hashKey = models.CharField(max_length=150, blank=True, null=True);
 	signature = models.CharField(max_length=100, blank=True, null=True);
 	
 	def __str__(self):
-		return "%s" % (self.utxo);
+		return "%s" % (self.upo);
 
 class Header(models.Model):
 	"""

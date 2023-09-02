@@ -17,18 +17,6 @@ class MMPoint(models.Model):
 	def __str__(self):
 		return "%s" % (self.name);
 
-class Corre0(models.Model):
-	"""
-		Correlation Table 0
-		Mutable:
-		One-To_One
-	"""
-	fbmpoint = models.OneToOneField(FBMPoint, on_delete=models.CASCADE, primary_key=True);
-	mmpoint = models.OneToOneField(MMPoint, on_delete=models.CASCADE, primary_key=True);
-	
-	def __str__(self):
-		return "%s" % (self.mmpoint);
-
 class FBMPoint(models.Model):
 	"""
 		Mutable:
@@ -43,16 +31,17 @@ class FBMPoint(models.Model):
 	def __str__(self):
 		return "%s" % (self.name);
 
-class Corre1(models.Model):
+class Corre0(models.Model):
 	"""
-		Mutable
-		One-To-One
+		Correlation Table 0
+		Mutable:
+		One-To_One
 	"""
-	fbmpoint = models.OneToOneField(FMBPoint, on_delete=models.CASCADE, primary_key=True);
-	llpoint = models.OneToOneField(LLPoint, on_delete=models.CASCADE, primary_key=True);
+	fbmpoint = models.OneToOneField(FBMPoint, on_delete=models.CASCADE);
+	mmpoint = models.OneToOneField(MMPoint, on_delete=models.CASCADE);
 	
 	def __str__(self):
-		return "%s" %s (self.llpoint);
+		return "%s" % (self.mmpoint);
 
 class LLPoint(models.Model):
 	"""
@@ -68,6 +57,19 @@ class LLPoint(models.Model):
 	def __str__(self):
 		return "%s" % (self.name);
 
+class Corre1(models.Model):
+	"""
+		Mutable
+		One-To-One
+	"""
+	fbmpoint = models.OneToOneField(FBMPoint, on_delete=models.CASCADE);
+	llpoint = models.OneToOneField(LLPoint, on_delete=models.CASCADE);
+	
+	def __str__(self):
+		return "%s" %s (self.llpoint);
+
+
+
 class LLPosition(models.Model):
 	"""
 		Immutable
@@ -79,7 +81,7 @@ class LLPosition(models.Model):
 	hashKey = models.CharField(max_length=50, blank=True, null=True);
 	signature = models.CharField(max_length=50, blank=True, null=True);
 	pkn = models.CharField(max_length=150, default='0');
-	pke = models.CharField(max_length=50, default='0';
+	pke = models.CharField(max_length=50, default='0');
 	
 	def __str__(self):
 		return "%s" % (self.time_stamp);
@@ -93,7 +95,7 @@ class Header(models.Model):
 	hashKey = models.CharField(max_length=100, blank=True, null=True);
 	signature = models.CharField(max_length=50, blank=True, null=True);
 	pkn = models.CharField(max_length=150, default='0');
-	pke = models.CharField(max_length=50, default='0';
+	pke = models.CharField(max_length=50, default='0');
 	
 	def __str__(self):
 		return "%s" % (self.nounce);
@@ -107,7 +109,7 @@ class Event(models.Model):
 	repeat = models.CharField(max_length=10, blank=True, null=True);
 	allDay = models.BooleanField(default=False);
 	start_time = models.CharField(max_length=10, blank=True, null=True);
-	end_time = models.CharField(max_length=10, blank=True, null=True;
+	end_time = models.CharField(max_length=10, blank=True, null=True);
 	description = models.CharField(max_length=150, blank=True, null=True);
 	duration = models.FloatField(default=0);
 	
@@ -123,7 +125,7 @@ class Reminder(models.Model):
 	repeat = models.CharField(max_length=10, blank=True, null=True);
 	allDay = models.BooleanField(default=False);
 	start_time = models.CharField(max_length=10, blank=True, null=True);
-	end_time = models.CharField(max_length=10, blank=True, null=True;
+	end_time = models.CharField(max_length=10, blank=True, null=True);
 	duration = models.FloatField(default=0);
 	
 	def __str__(self):
@@ -138,7 +140,7 @@ class Task(models.Model):
 	repeat = models.CharField(max_length=10, blank=True, null=True);
 	allDay = models.BooleanField(default=False);
 	start_time = models.CharField(max_length=10, blank=True, null=True);
-	end_time = models.CharField(max_length=10, blank=True, null=True;
+	end_time = models.CharField(max_length=10, blank=True, null=True);
 	description = models.CharField(max_length=150, blank=True, null=True);
 	duration = models.FloatField(default=0);
 	

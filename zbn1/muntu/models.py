@@ -61,7 +61,7 @@ class Message(models.Model):
         choices=MESSAGE_CHOICES, 
         default='TE'
         );
-	signature = models.CharField(max_langth=50, blank=True, null=True);
+	signature = models.CharField(max_length=50, blank=True, null=True);
 	pkn = models.CharField(max_length=150, default='0');	    # Public key n.
 	pke = models.CharField(max_length=50, default='0');	    # Public key e.
 
@@ -100,18 +100,35 @@ class Group(models.Model):
 	                            , default=NUCLEARFAM
 	                            );
 	closed = models.BooleanField(default=True);
+	members = models.ManyToManyField(
+		Mosebedisi,
+		through='Membership',
+		through_fields=('group', 'person'),
+	)
 
 	def __str__(self):
 		return "%s" % (self.name);
+
+class Membership(models.Model):
+	group = models.ForeignKey(Group, on_delete=models.CASCADE, default=0);
+	person = models.ForeignKey(Mosebedisi, on_delete=models.CASCADE, default=0);
+	inviter = models.ForeignKey(
+		Mosebedisi, 
+		on_delete=models.CASCADE,
+		related_name="membership_invites");
+	invite_reason = models.CharField(max_length=64)
+
+	def __str__(self):
+		return "%s" % (self.invite_reason);
 
 # Group member table (many-to-many).
 class Member(models.Model):
 	"""
 	A table relating users to the groups they are a part of and groups to their members.
 	"""
-	group = models.ManyToManyField(Group);
-	mosebedisi = models.ManyToManyField(Mosebedisi);
-	admin = models.BooleanField(default=True);
+	group = models.ForeignKey(Group, on_delete=models.CASCADE, default=0);
+	person = models.ForeignKey(Mosebedisi, on_delete=models.CASCADE, default=0);
+	admin = models.BooleanField(default=False);
 
 	def __str__(self):
 		return "%s" % (self.admin);
@@ -251,7 +268,7 @@ class LTime(models.Model):
 		(CLOCK_IN, "Clock In"),
 		(CLOCK_OUT, "Clock Out"),
 		(LUNCH_START, "Lunch Start"),
-		(LUNCH_END "Lunch End"),
+		(LUNCH_END, "Lunch End"),
 	);
 	
 	time_stamp = models.CharField(max_length=15, blank=True, null=True);
@@ -272,7 +289,7 @@ class Header(models.Model):
 	hashKey = models.CharField(max_length=100, blank=True, null=True);
 	signature = models.CharField(max_length=50, blank=True, null=True);
 	pkn = models.CharField(max_length=150, default='0');
-	pke = models.CharField(max_length=50, default='0';
+	pke = models.CharField(max_length=50, default='0');
 	
 	def __str__(self):
 		return "%s" % (self.nounce);
