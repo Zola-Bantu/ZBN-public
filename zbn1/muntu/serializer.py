@@ -11,6 +11,16 @@ class Profile_serializer(serializers.ModelSerializer):
         model = Profile;
         fields = "__all__";
 
+class FriendRequest_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = FriendRequest;
+        fields = "__all__";
+
+class Contact_serializer(serializers.ModelSerializer):
+    class Meta:
+        model = Contact;
+        fields = "__all__";
+
 class Message_serializer(serializers.ModelSerializer):
     class Meta:
         model = Message;

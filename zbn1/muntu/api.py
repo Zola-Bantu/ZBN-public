@@ -95,6 +95,98 @@ class ProfileDetail(APIView):
         model.delete();
         return Response(status=status.HTTP_204_NO_CONTENT);
 
+
+class FriendRequestList(APIView): # Inherits from the APIView class.
+    # Gets data from the database.
+    def get(self, request):
+        model = FriendRequest.objects.all();
+        serializer = FriendRequest_serializer(model, many=True);
+        return Response(serializer.data);
+
+    def post(self, request):
+        serializer = FriendRequest_serializer(data=request.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Reponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST);
+
+class FriendRequestDetail(APIView):
+    def get_FriendRequest(self, pk):
+        try:
+            model = FriendRequest.objects.get(id=pk);
+            return model;
+        except Exception as e:
+            print(e);
+            return;
+    
+    def get(self, requests, pk):
+        if not self.get_FriendRequest(pk):
+            return Response("No data");
+        serializer = FriendRequest_serializer(self.get_FriendRequest(pk));
+        return Response(serializer.data);
+        
+    def put(self, requests, pk):
+        if not self.get_FriendRequest(pk):
+            return Response("No data");
+        serializer = FriendRequest_serializer(self.get_FriendRequest(pk), data=requests.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUESTS);
+        
+    def delete(self, requests, pk):
+        if not self.get_FriendRequest(pk):
+            return Response("No data");
+        model = self.get_FriendRequest(pk);
+        model.delete();
+        return Response(status=status.HTTP_204_NO_CONTENT);
+        
+class ContactList(APIView): # Inherits from the APIView class.
+    # Gets data from the database.
+    def get(self, request):
+        model = Contact.objects.all();
+        serializer = Contact_serializer(model, many=True);
+        return Response(serializer.data);
+
+    def post(self, request):
+        serializer = Contact_serializer(data=request.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Reponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST);
+
+class ContactDetail(APIView):
+    def get_Contact(self, pk):
+        try:
+            model = Contact.objects.get(id=pk);
+            return model;
+        except Exception as e:
+            print(e);
+            return;
+    
+    def get(self, requests, pk):
+        if not self.get_Contact(pk):
+            return Response("No data");
+        serializer = Contact_serializer(self.get_Contact(pk));
+        return Response(serializer.data);
+        
+    def put(self, requests, pk):
+        if not self.get_Contact(pk):
+            return Response("No data");
+        serializer = Contact_serializer(self.get_Contact(pk), data=requests.data);
+        if serializer.is_valid():
+            serializer.save();
+            return Response(serializer.data, status=status.HTTP_201_CREATED);
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUESTS);
+        
+    def delete(self, requests, pk):
+        if not self.get_Contact(pk):
+            return Response("No data");
+        model = self.get_Contact(pk);
+        model.delete();
+        return Response(status=status.HTTP_204_NO_CONTENT);
+
+
 class MessageList(APIView): # Inherits from the APIView class.
     # Gets data from the database.
     def get(self, request):
