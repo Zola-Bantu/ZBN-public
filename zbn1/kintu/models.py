@@ -33,7 +33,7 @@ class Payment(models.Model):
 		'sender' and 'receiver'		
 	"""
 	sender = models.ManyToManyField(Account);
-	receiver = models.ManyToManyField(Account, related_name="reciever");
+	receiver = models.ManyToManyField(Account, related_name="receiver");
 	amount = models.CharField(max_length=100, blank=True, null=True);
 	upo = models.CharField(max_length=100, blank=True, null=True); #Unspent payment output
 	hashKey = models.CharField(max_length=150, blank=True, null=True);

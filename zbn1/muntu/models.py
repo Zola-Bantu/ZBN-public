@@ -1,5 +1,9 @@
 from django.db import models;
 import datetime;
+from django.db.models.signals import post_save, pre_save;
+from django.dispatch import receiver;
+from django.core.mail import send_mail;
+from django.conf import settings;
 
 # Create your models here.
 
@@ -51,6 +55,40 @@ class Profile(models.Model):
 	
     def __str__(self):
         return "%s" % (self.female);
+
+class FriendRequest(models.Model):
+	"""
+		Immutable.
+		Actually many-to-many		
+	"""
+	sender = models.ManyToManyField(Mosebedisi);
+	receiver = models.ManyToManyField(Mosebedisi, related_name="request_receiver");
+	signature = models.CharField(max_length=100, blank=True, null=True);
+	accepted = models.BooleanField(default=False);
+	
+	def __str__(self):
+		return "%s" % (self.signature);
+
+class Contact(models.Model):
+	user = models.ManyToManyField(Mosebedisi);
+	friend = models.ManyToManyField(Mosebedisi, related_name="friend");
+	connected = models.BooleanField(default=False);
+	
+	def __str__(self):
+		return "%s" % (self.connected);
+
+def post_save_user_receiver(sender, instance, *args, **kwargs):
+	"""
+	This is a signal sent by email to signal the successful creation of a new user.
+	"""
+	email = "jhamauhuru@gmail.com";
+	subject = "User created!";
+	message = "Please note that a new user has been created!";
+	
+	send_mail(subject, message, email, [settings.EMAIL_HOST_USER], fail_silently=False);
+	
+
+post_save.connect(post_save_user_receiver, sender=Mosebedisi);
 
 # Message table (one-to-many).
 class Message(models.Model):
