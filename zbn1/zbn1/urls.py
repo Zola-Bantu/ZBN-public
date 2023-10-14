@@ -22,9 +22,9 @@ urlpatterns = [
     re_path(r'^accounts/', include('allauth.urls')),
     re_path(r'^api/rest-auth/account-confirm-email/(?P<key>[-:\w]+)/$',allauthemailconfirmation,
     name='account_confirm_email'),
-    re_path('^api-auth/', include('rest_framework.urls')),
-    re_path('', include('muntu.urls')),
-    re_path('', include('hantu.urls')),
+    re_path(r'^api-auth/', include('rest_framework.urls')),
+    re_path(r'', include('muntu.urls')),
+    #re_path('', include('hantu.urls')),
 ];
 
 
