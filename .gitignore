@@ -1,5 +1,6 @@
 image/
 doc/
+access.py
 
 
 # Byte-compiled / optimized / DLL files
