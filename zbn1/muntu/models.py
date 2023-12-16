@@ -77,16 +77,24 @@ class Contact(models.Model):
 	def __str__(self):
 		return "%s" % (self.connected);
 
-def post_save_user_receiver(sender, instance, *args, **kwargs):
+def post_save_user_receiver(sender, instance, created, *args, **kwargs):
 	"""
 	This is a signal sent by email to signal the successful creation of a new user.
 	"""
-	email = "jhamauhuru@gmail.com";
-	subject = "User created!";
-	message = "Please note that a new user has been created!";
+	mosebedisi = instance;
+	if created:
+		prof = Profile.objects.create(
+		mosebedisi=mosebedisi
+		);
 	
-	send_mail(subject, message, email, [settings.EMAIL_HOST_USER], fail_silently=False);
+		email = "jhamauhuru@gmail.com";
+		subject = "User created!";
+		message = "Please note that a new user has been created!";
 	
+		send_mail(subject, message, email, [settings.EMAIL_HOST_USER], fail_silently=False);
+
+	else:
+		pass;
 
 post_save.connect(post_save_user_receiver, sender=Mosebedisi);
 
@@ -148,12 +156,13 @@ class Group(models.Model):
 		return "%s" % (self.name);
 
 class Membership(models.Model):
-	group = models.ForeignKey(Group, on_delete=models.CASCADE, default=0);
-	person = models.ForeignKey(Mosebedisi, on_delete=models.CASCADE, default=0);
+	group = models.ForeignKey(Group, on_delete=models.CASCADE);
+	person = models.ForeignKey(Mosebedisi, on_delete=models.CASCADE);
 	inviter = models.ForeignKey(
 		Mosebedisi, 
 		on_delete=models.CASCADE,
-		related_name="membership_invites");
+		related_name="membership_invites"
+		);
 	invite_reason = models.CharField(max_length=64)
 
 	def __str__(self):
@@ -164,8 +173,8 @@ class Member(models.Model):
 	"""
 	A table relating users to the groups they are a part of and groups to their members.
 	"""
-	group = models.ForeignKey(Group, on_delete=models.CASCADE, default=0);
-	person = models.ForeignKey(Mosebedisi, on_delete=models.CASCADE, default=0);
+	group = models.ForeignKey(Group, on_delete=models.CASCADE);
+	person = models.ForeignKey(Mosebedisi, on_delete=models.CASCADE);
 	admin = models.BooleanField(default=False);
 
 	def __str__(self):
