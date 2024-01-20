@@ -15,7 +15,7 @@ RELATIONSHIP_STATUS_CHOICES = (
     ('DV', 'divorced'),
     ('WI', 'widowed')
     );
-    
+
 MESSAGE_CHOICES = (
     ('TE', 'text'),
     ('VN', 'voice note'),
@@ -31,7 +31,7 @@ class Mosebedisi(models.Model):
     				);
     pkn = models.CharField(max_length=5000, blank=True, null=True); 	# Public key n.
     pke = models.CharField(max_length=50, default='0');		 # Public key e.
-	
+
     def __str__(self):
         return "%s" % (self.username);
 
@@ -48,24 +48,24 @@ class Profile(models.Model):
     female = models.BooleanField(default=True);
     Status = models.CharField(
         max_length=2,
-        choices=RELATIONSHIP_STATUS_CHOICES, 
+        choices=RELATIONSHIP_STATUS_CHOICES,
         default='SI'
         );
     bio = models.CharField(max_length=300, blank=True, null=True);
-	
+
     def __str__(self):
         return "%s" % (self.female);
 
 class FriendRequest(models.Model):
 	"""
 		Immutable.
-		Actually many-to-many		
+		Actually many-to-many
 	"""
 	sender = models.ManyToManyField(Mosebedisi);
 	receiver = models.ManyToManyField(Mosebedisi, related_name="request_receiver");
 	signature = models.CharField(max_length=100, blank=True, null=True);
 	accepted = models.BooleanField(default=False);
-	
+
 	def __str__(self):
 		return "%s" % (self.signature);
 
@@ -73,7 +73,7 @@ class Contact(models.Model):
 	user = models.ManyToManyField(Mosebedisi);
 	friend = models.ManyToManyField(Mosebedisi, related_name="friend");
 	connected = models.BooleanField(default=False);
-	
+
 	def __str__(self):
 		return "%s" % (self.connected);
 
@@ -86,11 +86,11 @@ def post_save_user_receiver(sender, instance, created, *args, **kwargs):
 		prof = Profile.objects.create(
 		mosebedisi=mosebedisi
 		);
-	
+
 		email = "jhamauhuru@gmail.com";
 		subject = "User created!";
 		message = "Please note that a new user has been created!";
-	
+
 		send_mail(subject, message, email, [settings.EMAIL_HOST_USER], fail_silently=False);
 
 	else:
@@ -101,7 +101,7 @@ post_save.connect(post_save_user_receiver, sender=Mosebedisi);
 # Message table (one-to-many).
 class Message(models.Model):
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE);
-	message = models.TextField();
+	message = models.TextField(blank=True, null=True);
 	signature = models.CharField(max_length=50, blank=True, null=True);
 	pkn = models.CharField(max_length=150, default='0');	    # Public key n.
 	pke = models.CharField(max_length=50, default='0');	    # Public key e.
@@ -154,7 +154,7 @@ class Membership(models.Model):
 	group = models.ForeignKey(Group, on_delete=models.CASCADE);
 	person = models.ForeignKey(Mosebedisi, on_delete=models.CASCADE);
 	inviter = models.ForeignKey(
-		Mosebedisi, 
+		Mosebedisi,
 		on_delete=models.CASCADE,
 		related_name="membership_invites"
 		);
@@ -192,7 +192,7 @@ class Need(models.Model):
 	need_type = models.CharField(max_length=2, choices=NEED_TYPES, default=PHYSICAL);
 	group = models.ForeignKey(to=Group, on_delete=models.CASCADE);
 	due_date = models.DateField(default = datetime.date(2023,7,8));
-	
+
 	def __str__(self):
 		return "%s" % (self.need);
 
@@ -206,50 +206,50 @@ class MileStone(models.Model):
 	description = models.CharField(max_length=1000, blank=True, null=True);
 	dependant = models.BooleanField(default=False);
 	due_date = models.DateField(default=datetime.date(2023,7,8));
-	
+
 	def __str__(self):
 		return "%s" % (self.milestone);
 """
 class Dependency(models.Model):
-	
+
 	#(relation : one to one)
 	#A table relating all the dependent milestones to the milestone they are dependent on.
-	
+
 	dependant_milestone = models.ManyToManyField(to=MileStone);
 	milestone = models.ManyToManyField(to=MileStone);
 	completable = models.BooleanField(default=False);
-	
+
 	def __str__(self):
 		return "%s" % (self.completable);
 """
 class Responsibility(models.Model):
 	"""
 	(relational: many to many)
-	A table relating the milestones of the needs of a group to those (members) 
-	who have qualified and are responsible for coordinating the provision for 
+	A table relating the milestones of the needs of a group to those (members)
+	who have qualified and are responsible for coordinating the provision for
 	these needs.
-	NOTE: The responsibility table will be populated by comparing the 
-	QUALIFICATION REQUIREMENT table and ACHIEVER table. Accepting those who 
+	NOTE: The responsibility table will be populated by comparing the
+	QUALIFICATION REQUIREMENT table and ACHIEVER table. Accepting those who
 	qualify for the position.
 	"""
 	member = models.ManyToManyField(to=Member);
 	milestone = models.ManyToManyField(to=MileStone);
 	complete = models.BooleanField(default=False);
-	
+
 	def __str__(self):
 		return "%s" % (self.complete);
-	
+
 class Candidates(models.Model):
 	"""
 	(relational: many to many)
-	A table relating the candidates chosen and the qualification requirements for 
-	an individual to be given the responsibility of coordinating the provision for 
+	A table relating the candidates chosen and the qualification requirements for
+	an individual to be given the responsibility of coordinating the provision for
 	a milestone of a need.
 	"""
 	member = models.ManyToManyField(to=Member);
 	milestone = models.ManyToManyField(to=MileStone);
 	qualified = models.BooleanField(default=False);
-	
+
 	def __str__(self):
 		return "%s" % (self.qualified);
 
@@ -260,10 +260,10 @@ class Achievement(models.Model):
 	"""
 	achievement = models.CharField(max_length=100, blank=True, null=True);
 	description = models.CharField(max_length=1000, blank=True, null=True);
-	
+
 	def __str__(self):
 		return "%s" % (self.achievement);
-		
+
 class Achiever(models.Model):
 	"""
 	(relational: many to many)
@@ -284,17 +284,17 @@ class Achiever(models.Model):
 class QualificationRequirements(models.Model):
 	"""
 	(relational: many to many)
-	A table relating achievements required for an individual to be given the 
-	responsibility to coordinate the provision of a need (or needs) that the 
+	A table relating achievements required for an individual to be given the
+	responsibility to coordinate the provision of a need (or needs) that the
 	group has.
-	NOTE: An achievement is a track record that indicates competency.  The 
-	needs of a group are vital and cannot be entrusted to an incompetent 
+	NOTE: An achievement is a track record that indicates competency.  The
+	needs of a group are vital and cannot be entrusted to an incompetent
 	individual or incompetent individuals, lest disaster ensue.
 	"""
 	name = models.CharField(max_length=20, blank=True, null=True);
 	milestone = models.ManyToManyField(to=MileStone);
 	achievement = models.ManyToManyField(to=Achievement);
-	
+
 	def __str__(self):
 		return "%s" % (self.name);
 
@@ -312,13 +312,13 @@ class LTime(models.Model):
 		(LUNCH_START, "Lunch Start"),
 		(LUNCH_END, "Lunch End"),
 	);
-	
+
 	time_stamp = models.CharField(max_length=15, blank=True, null=True);
 	status = models.CharField(max_length=2, choices=STATUS_OPTIONS, default=CLOCK_OUT);
 	hashKey = models.CharField(max_length=100, blank=True, null=True);
 	signature = models.CharField(max_length=50, blank=True, null=True);
 	mosebedisi = models.ManyToManyField(to=Mosebedisi);
-	
+
 	def __str__(self):
 		 return "%s"  % (self.time_stamp);
 
@@ -332,7 +332,7 @@ class Header(models.Model):
 	signature = models.CharField(max_length=50, blank=True, null=True);
 	pkn = models.CharField(max_length=150, default='0');
 	pke = models.CharField(max_length=50, default='0');
-	
+
 	def __str__(self):
 		return "%s" % (self.nounce);
 
