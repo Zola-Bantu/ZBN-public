@@ -29,8 +29,8 @@ class Mosebedisi(models.Model):
     username = models.CharField(max_length=50	# Maximum number of characters allowed for username.
     				,blank=True, null=True      # Allows username to be left blank.
     				);
-    pkn = models.CharField(max_length=150, default='0');	    # Public key n.
-    pke = models.CharField(max_length=50, default='0');	    # Public key e.
+    pkn = models.CharField(max_length=5000, blank=True, null=True); 	# Public key n.
+    pke = models.CharField(max_length=50, default='0');		 # Public key e.
 	
     def __str__(self):
         return "%s" % (self.username);
@@ -101,12 +101,7 @@ post_save.connect(post_save_user_receiver, sender=Mosebedisi);
 # Message table (one-to-many).
 class Message(models.Model):
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE);
-	message = models.FileField(blank=True, null=True);
-	msg_type= models.CharField(
-        max_length=2,
-        choices=MESSAGE_CHOICES, 
-        default='TE'
-        );
+	message = models.TextField();
 	signature = models.CharField(max_length=50, blank=True, null=True);
 	pkn = models.CharField(max_length=150, default='0');	    # Public key n.
 	pke = models.CharField(max_length=50, default='0');	    # Public key e.
