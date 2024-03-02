@@ -103,8 +103,8 @@ class Message(models.Model):
 	profile = models.ForeignKey(Profile, on_delete=models.CASCADE);
 	message = models.TextField(blank=True, null=True);
 	signature = models.CharField(max_length=50, blank=True, null=True);
-	pkn = models.CharField(max_length=150, default='0');	    # Public key n.
-	pke = models.CharField(max_length=50, default='0');	    # Public key e.
+	pkn = models.CharField(max_length=5000, default='0');	    # Public key n.
+	pke = models.CharField(max_length=100, default='0');	    # Public key e.
 
 	def __str__(self):
 		return "%s" % (self.msg_type);
