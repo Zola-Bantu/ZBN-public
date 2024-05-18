@@ -1,0 +1,13 @@
+DEBUG 2024-05-18 11:37:37,724 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-05-18 11:37:38,187 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-05-18 11:37:44,171 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-05-18 11:37:44,570 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+WARNING 2024-05-18 11:37:46,620 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-05-18 11:37:46,632 - Not Found: /assets/images/user/1.jpg - log_response
+WARNING 2024-05-18 11:37:46,640 - Not Found: /assets/images/chat/avatar/06.png - log_response
+WARNING 2024-05-18 11:37:46,645 - Not Found: /assets/images/chat/avatar/07.png - log_response
+WARNING 2024-05-18 11:37:46,647 - Not Found: /assets/images/chat/avatar/05.png - log_response
+WARNING 2024-05-18 11:37:46,651 - Not Found: /assets/images/chat/avatar/08.png - log_response
+WARNING 2024-05-18 11:37:46,655 - Not Found: /assets/images/chat/avatar/10.png - log_response
+WARNING 2024-05-18 11:39:28,527 - Not Found: /assets/images/chat/avatar/06.png - log_response
+WARNING 2024-05-18 11:39:28,533 - Not Found: /assets/images/chat/avatar/01.png - log_response
