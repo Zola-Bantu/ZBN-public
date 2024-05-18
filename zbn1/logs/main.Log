@@ -11,3 +11,40 @@ WARNING 2024-05-18 11:37:46,651 - Not Found: /assets/images/chat/avatar/08.png -
 WARNING 2024-05-18 11:37:46,655 - Not Found: /assets/images/chat/avatar/10.png - log_response
 WARNING 2024-05-18 11:39:28,527 - Not Found: /assets/images/chat/avatar/06.png - log_response
 WARNING 2024-05-18 11:39:28,533 - Not Found: /assets/images/chat/avatar/01.png - log_response
+DEBUG 2024-05-18 13:50:24,081 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-05-18 13:50:24,558 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-05-18 13:50:48,745 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-05-18 13:50:49,221 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+WARNING 2024-05-18 13:50:50,752 - Not Found: /assets/images/chat/avatar/05.png - log_response
+WARNING 2024-05-18 13:50:50,754 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-05-18 13:50:50,782 - Not Found: /assets/images/user/1.jpg - log_response
+WARNING 2024-05-18 13:50:50,784 - Not Found: /assets/images/chat/avatar/10.png - log_response
+WARNING 2024-05-18 13:50:50,790 - Not Found: /assets/images/chat/avatar/07.png - log_response
+WARNING 2024-05-18 13:50:50,795 - Not Found: /assets/images/chat/avatar/06.png - log_response
+WARNING 2024-05-18 13:50:50,798 - Not Found: /assets/images/chat/avatar/08.png - log_response
+WARNING 2024-05-18 13:50:55,640 - Not Found: /assets/images/chat/avatar/06.png - log_response
+WARNING 2024-05-18 13:50:55,656 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-05-18 13:52:52,380 - Not Found: /assets/images/chat/avatar/07.png - log_response
+WARNING 2024-05-18 13:52:52,382 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-05-18 13:52:53,210 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-05-18 13:52:53,227 - Not Found: /assets/images/chat/avatar/08.png - log_response
+WARNING 2024-05-18 13:52:55,036 - Not Found: /assets/images/chat/avatar/10.png - log_response
+WARNING 2024-05-18 13:52:55,048 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-05-18 13:52:55,637 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-05-18 13:52:55,644 - Not Found: /assets/images/chat/05.png - log_response
+WARNING 2024-05-18 13:52:55,666 - Not Found: /assets/images/chat/avatar/05.png - log_response
+WARNING 2024-05-18 13:52:56,330 - Not Found: /assets/images/chat/avatar/06.png - log_response
+WARNING 2024-05-18 13:52:56,333 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-05-18 13:52:58,192 - Not Found: /assets/images/chat/avatar/10.png - log_response
+WARNING 2024-05-18 13:52:59,088 - Not Found: /assets/images/chat/avatar/08.png - log_response
+WARNING 2024-05-18 13:52:59,099 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-05-18 13:53:03,480 - Not Found: /assets/images/chat/avatar/05.png - log_response
+DEBUG 2024-05-18 13:56:59,229 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-05-18 13:57:00,714 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+WARNING 2024-05-18 13:57:01,040 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-05-18 13:57:01,052 - Not Found: /assets/images/user/1.jpg - log_response
+WARNING 2024-05-18 13:57:01,070 - Not Found: /assets/images/chat/avatar/05.png - log_response
+WARNING 2024-05-18 13:57:01,080 - Not Found: /assets/images/chat/avatar/06.png - log_response
+WARNING 2024-05-18 13:57:01,108 - Not Found: /assets/images/chat/avatar/07.png - log_response
+WARNING 2024-05-18 13:57:01,109 - Not Found: /assets/images/chat/avatar/08.png - log_response
+WARNING 2024-05-18 13:57:01,349 - Not Found: /assets/images/chat/avatar/10.png - log_response

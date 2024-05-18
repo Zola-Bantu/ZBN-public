@@ -26,7 +26,7 @@ SECRET_KEY = access.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = access.DEBUG
 
-ALLOWED_HOSTS = ["127.0.0.1", "192.168.0.106"]
+ALLOWED_HOSTS = ["127.0.0.1", "192.168.0.106", "zbn1.pythonanywhere.com"]
 
 # Application definition
 
