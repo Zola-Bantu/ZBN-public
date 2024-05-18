@@ -7,13 +7,13 @@ from django.core.mail import send_mail
 from django.conf import settings
 from hantu.signals import page_viewed_signal
 from hantu.utils import get_client_ip, get_info
-#from hantu0.utils import Challenge
+#from hantu0.utils Challenge
 #from kuntu.meroetic import meroetic, meroe_preview
 #from kuntu.proverbs import proverbs
 from allauth.account.models import EmailAddress
 from django.urls import reverse
 
-import logging, os, time, calendar, datetime, stripe
+import logging, os, time, calendar, datetime
 
 name = "BlackMail"
 
