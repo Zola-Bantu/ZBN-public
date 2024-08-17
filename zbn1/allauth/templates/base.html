@@ -6,15 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{% static 'afrika/image/af.png' %}">
+    <link rel="icon" href="{% static 'muntu/image/sisi_watu1.png' %}">
 
-    <title>Uhuru Protocol</title>
+    <title>Bantu Chat</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'afrika/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'muntu/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{% static 'afrika/css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'muntu/css/main.css' %}" rel="stylesheet">
 
 <style>
  /* Style the buttons that are used to open and close the accordion panel */
@@ -167,6 +167,7 @@
 
 </style>
 
+
     {% block extra_head %}
     {% endblock %}
   </head>
@@ -182,7 +183,7 @@
             <div class="col-sm-4 offset-md-1 py-4">
               <h4 class="text-white">More</h4>
               <ul class="list-unstyled">
-                <li><a href="#" class="text-white">Constitution</a></li>
+                <li><a href="{% static 'afrika/doc/Constitution_en(unofficial).pdf' %}" class="text-white">Constitution</a></li>
                 {% if user.is_authenticated %}
                 <li><a href="/accounts/logout/" class="text-white">Sign Out</a></li>
                 {% else %}
@@ -195,8 +196,8 @@
       </div>
       <div class="navbar navbar-dark bg-dark shadow-sm">
         <div class="container d-flex justify-content-between">
-          <a href="/accounts/login" class="navbar-brand d-flex align-items-center">
-            <img src="{% static 'afrika/image/ZB.png' %}" alt="{% static 'afrika/image/af.png' %}" height="38">
+          <a href="/secure/" class="navbar-brand d-flex align-items-center">
+            <img src="{% static 'muntu/image/ZB.png' %}" alt="{% static 'muntu/image/af.png' %}" height="38">
             <strong>Uhuru Protocol</strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -236,37 +237,28 @@
    </map>
  </div>
 -->
-    <div>
-      <strong>Menu:</strong>
-      <ul>
-        {% if user.is_authenticated %}
-        <li><a href="{% url 'account_email' %}">Change E-mail</a></li>
-        <li><a href="{% url 'account_logout' %}">Sign Out</a></li>
-        {% else %}
-        <li><a href="{% url 'account_login' %}">Sign In</a></li>
-        <li><a href="{% url 'account_signup' %}">Sign Up</a></li>
-        {% endif %}
-      </ul>
-    </div>
+
+
+    <br></br><br></br>
     {% block content %}
     {% endblock %}
     {% endblock %}
     {% block extra_body %}
     {% endblock %}
 
-    </main><br></br>
+    </main><br></br><br></br><br></br><br></br><br></br><br></br>
 
     <footer class="container">
-      <p>&copy; 2020 Powered by <a href="https://nal1.pythonanywhere.com">Chama Cha Uhuru (CCU)</a></p>
+      <p>&copy; 2020 Powered by <a href="http://jhama.pythonanywhere.com">Jhama<img src="{% static 'kuntu/image/rn_kmt/G41.png' %}"></a></p>
     </footer><br></br><br></br><br></br>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="{% static 'afrika/js/jquery-slim.min.js' %}"><\/script>')</script>
-    <script src="{% static 'afrika/js/popper.min.js' %}"></script>
-    <script src="{% static 'afrika/js/bootstrap.min.js' %}"></script>
+    <script>window.jQuery || document.write('<script src="{% static 'muntu/js/jquery-slim.min.js' %}"><\/script>')</script>
+    <script src="{% static 'muntu/js/popper.min.js' %}"></script>
+    <script src="{% static 'muntu/js/bootstrap.min.js' %}"></script>
 
 <script>
 

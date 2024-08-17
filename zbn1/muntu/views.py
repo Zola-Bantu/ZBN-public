@@ -68,16 +68,39 @@ def sitemap(request):
 	
     }
     template = 'muntu/map.html'
+    page_viewed_signal.send(None, request=request)
     return render(request, template, context)
 
+
+@login_required
 def chat(request):
     
     status, country, country_code, region_code, region, town, zip_code, lat, lon, timezone, isp, organization, az, query = get_info(get_client_ip(request))
     
+    url = request.path
+    
     context = {
+	'year': "%s" % (datetime.date.today().year),
+    	'time': time.strftime("%H:%M:%S"),
+    	#'meroetic': lis,
+    	'url': url,
+    	'country': country,
+    	'ccode': country_code,
+    	'region': region,
+    	'rcode': region_code,
+    	'town': town, 
+    	'zip_code': zip_code,
+    	'lat': lat, 
+    	'lon': lon, 
+    	'timezone': timezone, 
+    	'isp': isp, 
+    	'organization': organization,
+    	'az': az, 
+    	'qwery': query,
 	
     }
     template = 'muntu/chat.html'
+    page_viewed_signal.send(None, request=request)
     return render(request, template, context)
 
 

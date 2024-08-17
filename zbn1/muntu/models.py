@@ -29,53 +29,12 @@ class Mosebedisi(models.Model):
     username = models.CharField(max_length=50	# Maximum number of characters allowed for username.
     				,blank=True, null=True      # Allows username to be left blank.
     				);
-    pkn = models.CharField(max_length=5000, blank=True, null=True); 	# Public key n.
-    pke = models.CharField(max_length=50, default='0');		 # Public key e.
+    pkn = models.TextField(blank=True, null=True);	# Public key n.
+    pke = models.CharField(max_length=50, default='0');
+    address = models.CharField(max_length=100, default='0');		 # Public key e.
 
     def __str__(self):
         return "%s" % (self.username);
-
-
-#Profile table (one-to-one)
-
-class Profile(models.Model):
-    mosebedisi = models.OneToOneField(
-        Mosebedisi,
-        on_delete=models.CASCADE,
-        primary_key=True,
-        );
-    picture = models.FileField(blank=True, null=True);
-    female = models.BooleanField(default=True);
-    Status = models.CharField(
-        max_length=2,
-        choices=RELATIONSHIP_STATUS_CHOICES,
-        default='SI'
-        );
-    bio = models.CharField(max_length=300, blank=True, null=True);
-
-    def __str__(self):
-        return "%s" % (self.female);
-
-class FriendRequest(models.Model):
-	"""
-		Immutable.
-		Actually many-to-many
-	"""
-	sender = models.ManyToManyField(Mosebedisi);
-	receiver = models.ManyToManyField(Mosebedisi, related_name="request_receiver");
-	signature = models.CharField(max_length=100, blank=True, null=True);
-	accepted = models.BooleanField(default=False);
-
-	def __str__(self):
-		return "%s" % (self.signature);
-
-class Contact(models.Model):
-	user = models.ManyToManyField(Mosebedisi);
-	friend = models.ManyToManyField(Mosebedisi, related_name="friend");
-	connected = models.BooleanField(default=False);
-
-	def __str__(self):
-		return "%s" % (self.connected);
 
 def post_save_user_receiver(sender, instance, created, *args, **kwargs):
 	"""
@@ -84,7 +43,7 @@ def post_save_user_receiver(sender, instance, created, *args, **kwargs):
 	mosebedisi = instance;
 	if created:
 		prof = Profile.objects.create(
-		mosebedisi=mosebedisi
+		mosebedisi=mosebedi0si
 		);
 
 		email = "jhamauhuru@gmail.com";
@@ -98,16 +57,69 @@ def post_save_user_receiver(sender, instance, created, *args, **kwargs):
 
 post_save.connect(post_save_user_receiver, sender=Mosebedisi);
 
+#Profile table (one-to-one)
+
+class Profile(models.Model): 
+    mosebedisi = models.OneToOneField(
+        Mosebedisi,
+        on_delete=models.CASCADE,
+        primary_key=True,
+        );
+    picture = models.FileField(blank=True, null=True);
+    gender = models.CharField(max_length=50, blank=True, null=True);
+    Status = models.CharField(max_length=50, blank=True, null=True);
+    bio = models.CharField(max_length=600, blank=True, null=True);
+
+    def __str__(self):
+        return "%s" % (self.female);
+
+class FriendRequest(models.Model): # Redundant for now 
+	"""
+		Immutable.
+		Actually many-to-many
+	"""
+	sender = models.ManyToManyField(Profile);
+	receiver = models.ManyToManyField(Profile, related_name="request_receiver");
+	signature = models.CharField(max_length=100, blank=True, null=True);
+	accepted = models.CharField(max_length=100, default="False");
+
+	def __str__(self):
+		return "%s" % (self.signature);
+
+class Contact(models.Model): # replaced by pipe - may be useful later
+	time_created = models.DateTimeField(auto_now_add=True)
+	user = models.ManyToManyField(Mosebedisi);
+	connected = models.BooleanField(default=False);
+	#secret = models.CharField(max_length=50, blank=True, null=True);
+
+	def __str__(self):
+		return "%s" % (self.connected);
+
+
+class Pipe(models.Model): # Good for now, will eventually become contact request
+	time_created = models.DateTimeField(auto_now_add=True)
+	user0_addr = models.CharField(max_length=50, blank=True, null=True);
+	user1_addr = models.CharField(max_length=50, blank=True, null=True);
+	connected = models.BooleanField(default=False);
+	secret = models.TextField(blank=True, null=True);
+	nonce = models.TextField(blank=True, null=True);
+
+	def __str__(self):
+		return "%s" % (self.connected);
+
 # Message table (one-to-many).
 class Message(models.Model):
-	profile = models.ForeignKey(Profile, on_delete=models.CASCADE);
+	time_created = models.DateTimeField(auto_now_add=True)
+	sender_addr = models.CharField(max_length=50, blank=True, null=True);
+	reciever_addr = models.CharField(max_length=50, blank=True, null=True);
 	message = models.TextField(blank=True, null=True);
 	signature = models.CharField(max_length=50, blank=True, null=True);
+	nonce = models.CharField(max_length=50, blank=True, null=True);
 	pkn = models.CharField(max_length=5000, default='0');	    # Public key n.
 	pke = models.CharField(max_length=100, default='0');	    # Public key e.
 
 	def __str__(self):
-		return "%s" % (self.msg_type);
+		return "%s | %s" % (self.time_created, self.sender_addr);
 
 # Group Table (not a relational table).
 class Group(models.Model):

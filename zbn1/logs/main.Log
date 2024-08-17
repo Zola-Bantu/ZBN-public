@@ -48,3 +48,354 @@ WARNING 2024-05-18 13:57:01,080 - Not Found: /assets/images/chat/avatar/06.png -
 WARNING 2024-05-18 13:57:01,108 - Not Found: /assets/images/chat/avatar/07.png - log_response
 WARNING 2024-05-18 13:57:01,109 - Not Found: /assets/images/chat/avatar/08.png - log_response
 WARNING 2024-05-18 13:57:01,349 - Not Found: /assets/images/chat/avatar/10.png - log_response
+ERROR 2024-05-18 15:14:30,962 - Internal Server Error: /accounts/login/ - log_response
+Traceback (most recent call last):
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 1024, in find_library
+    return parser.libraries[name]
+KeyError: 'socialaccount'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 143, in _get_response
+    response = response.render()
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/loaders/base.py", line 29, in get_template
+    return Template(
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 1081, in load
+    lib = find_library(parser, name)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 1026, in find_library
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'socialaccount' is not a registered tag library. Must be one of:
+account
+admin_list
+admin_modify
+admin_static
+admin_urls
+cache
+i18n
+l10n
+log
+rest_framework
+static
+staticfiles
+tz
+WARNING 2024-05-18 15:14:31,146 - Not Found: /favicon.ico - log_response
+ERROR 2024-05-18 15:29:32,966 - Internal Server Error: /accounts/login/ - log_response
+Traceback (most recent call last):
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 1024, in find_library
+    return parser.libraries[name]
+KeyError: 'socialaccount'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 143, in _get_response
+    response = response.render()
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/loaders/base.py", line 29, in get_template
+    return Template(
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 1081, in load
+    lib = find_library(parser, name)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 1026, in find_library
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'socialaccount' is not a registered tag library. Must be one of:
+account
+admin_list
+admin_modify
+admin_static
+admin_urls
+cache
+i18n
+l10n
+log
+rest_framework
+static
+staticfiles
+tz
+ERROR 2024-05-18 15:30:53,947 - Internal Server Error: /accounts/login/ - log_response
+Traceback (most recent call last):
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 1024, in find_library
+    return parser.libraries[name]
+KeyError: 'socialaccount'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 145, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 143, in _get_response
+    response = response.render()
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/response.py", line 106, in render
+    self.content = self.rendered_content
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/response.py", line 81, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/response.py", line 63, in resolve_template
+    return select_template(template, using=self.using)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/backends/django.py", line 34, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/engine.py", line 143, in get_template
+    template, origin = self.find_template(template_name)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/engine.py", line 125, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/loaders/base.py", line 29, in get_template
+    return Template(
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 156, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 194, in compile_nodelist
+    return parser.parse()
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/loader_tags.py", line 266, in do_extends
+    nodelist = parser.parse()
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 478, in parse
+    raise self.error(token, e)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/base.py", line 476, in parse
+    compiled_result = compile_func(self, token)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 1081, in load
+    lib = find_library(parser, name)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/template/defaulttags.py", line 1026, in find_library
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: 'socialaccount' is not a registered tag library. Must be one of:
+account
+admin_list
+admin_modify
+admin_static
+admin_urls
+cache
+i18n
+l10n
+log
+rest_framework
+static
+staticfiles
+tz
+DEBUG 2024-05-18 16:14:00,626 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-05-18 16:14:06,086 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+INFO 2024-05-18 16:18:03,876 - /media/zero/2A40CD7140CD4473/Products/01-Transport/ZBN-public/zbn1/muntu/views.py changed, reloading. - trigger_reload
+INFO 2024-05-18 16:26:59,808 - /media/zero/2A40CD7140CD4473/Products/01-Transport/ZBN-public/zbn1/muntu/views.py changed, reloading. - trigger_reload
+INFO 2024-05-18 16:27:09,640 - /media/zero/2A40CD7140CD4473/Products/01-Transport/ZBN-public/zbn1/muntu/views.py changed, reloading. - trigger_reload
+INFO 2024-05-18 16:29:14,292 - /media/zero/2A40CD7140CD4473/Products/01-Transport/ZBN-public/zbn1/muntu/views.py changed, reloading. - trigger_reload
+DEBUG 2024-05-25 11:51:01,423 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-05-25 11:51:02,268 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-05-25 11:51:02,273 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-05-25 11:51:02,772 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+ERROR 2024-05-25 11:51:03,118 - Internal Server Error: / - log_response
+Traceback (most recent call last):
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.OperationalError: no such table: hantu_pageviewed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/media/zero/2A40CD7140CD4473/Products/01-Transport/ZBN-public/zbn1/muntu/views.py", line 71, in sitemap
+    page_viewed_signal.send(None, request=request)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/dispatch/dispatcher.py", line 173, in send
+    return [
+  File "/home/zero/venv/lib/python3.8/site-packages/django/dispatch/dispatcher.py", line 174, in <listcomp>
+    (receiver, receiver(signal=self, sender=sender, **named))
+  File "/media/zero/2A40CD7140CD4473/Products/01-Transport/ZBN-public/zbn1/hantu/models.py", line 79, in page_viewed_reciever
+    page_view_obj = PageViewed.objects.create(
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/models/query.py", line 422, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/models/base.py", line 743, in save
+    self.save_base(using=using, force_insert=force_insert,
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/models/base.py", line 780, in save_base
+    updated = self._save_table(
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/models/base.py", line 873, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/models/base.py", line 910, in _do_insert
+    return manager._insert([self], fields=fields, return_id=update_pk,
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/models/manager.py", line 82, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/models/query.py", line 1186, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/models/sql/compiler.py", line 1377, in execute_sql
+    cursor.execute(sql, params)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 99, in execute
+    return super().execute(sql, params)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 67, in execute
+    return self._execute_with_wrappers(sql, params, many=False, executor=self._execute)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 76, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/utils.py", line 89, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/backends/utils.py", line 84, in _execute
+    return self.cursor.execute(sql, params)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/db/backends/sqlite3/base.py", line 383, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.OperationalError: no such table: hantu_pageviewed
+WARNING 2024-05-25 11:51:03,432 - Not Found: /favicon.ico - log_response
+DEBUG 2024-05-25 11:53:26,601 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-05-25 11:53:27,320 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-05-25 11:53:27,338 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-05-25 11:53:27,887 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-05-25 12:17:07,276 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-05-25 12:17:07,900 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+ERROR 2024-05-25 12:17:07,949 - Internal Server Error: /chat/ - log_response
+Traceback (most recent call last):
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/exception.py", line 34, in inner
+    response = get_response(request)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/core/handlers/base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/zero/venv/lib/python3.8/site-packages/django/contrib/auth/decorators.py", line 21, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/media/zero/2A40CD7140CD4473/Products/01-Transport/ZBN-public/zbn1/muntu/views.py", line 84, in chat
+    'url': url,
+NameError: name 'url' is not defined
+INFO 2024-05-25 12:18:30,848 - /media/zero/2A40CD7140CD4473/Products/01-Transport/ZBN-public/zbn1/muntu/views.py changed, reloading. - trigger_reload
+DEBUG 2024-05-25 12:18:36,257 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-05-25 12:18:36,983 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-05-25 12:18:36,986 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-05-25 12:18:37,598 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+WARNING 2024-05-25 12:18:40,241 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-05-25 12:18:40,260 - Not Found: /assets/images/chat/avatar/05.png - log_response
+WARNING 2024-05-25 12:18:40,266 - Not Found: /assets/images/user/1.jpg - log_response
+WARNING 2024-05-25 12:18:40,268 - Not Found: /assets/images/chat/avatar/06.png - log_response
+WARNING 2024-05-25 12:18:40,272 - Not Found: /assets/images/chat/avatar/07.png - log_response
+WARNING 2024-05-25 12:18:40,280 - Not Found: /assets/images/chat/avatar/10.png - log_response
+WARNING 2024-05-25 12:18:40,283 - Not Found: /assets/images/chat/avatar/08.png - log_response
+WARNING 2024-05-25 12:18:54,862 - Not Found: /assets/images/chat/avatar/05.png - log_response
+DEBUG 2024-06-01 14:23:14,658 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-01 14:23:15,407 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-06-01 14:23:15,447 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-01 14:23:15,960 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+WARNING 2024-06-01 14:31:39,697 - Not Found: /accounts/profile/ - log_response
+WARNING 2024-06-01 14:31:39,858 - Not Found: /favicon.ico - log_response
+DEBUG 2024-06-01 14:31:58,337 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-01 14:31:58,989 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-06-01 14:31:59,011 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-01 14:31:59,407 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-06-01 14:32:02,986 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-01 14:32:03,621 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-06-01 14:32:03,623 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-01 14:32:04,359 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+WARNING 2024-06-01 14:32:06,252 - Not Found: /assets/images/user/1.jpg - log_response
+WARNING 2024-06-01 14:32:06,263 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-06-01 14:32:06,270 - Not Found: /assets/images/chat/avatar/05.png - log_response
+WARNING 2024-06-01 14:32:06,313 - Not Found: /assets/images/chat/avatar/07.png - log_response
+WARNING 2024-06-01 14:32:06,324 - Not Found: /assets/images/chat/avatar/08.png - log_response
+WARNING 2024-06-01 14:32:06,327 - Not Found: /assets/images/chat/avatar/06.png - log_response
+WARNING 2024-06-01 14:32:06,339 - Not Found: /assets/images/chat/avatar/10.png - log_response
+DEBUG 2024-06-01 14:32:23,501 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-01 14:32:24,050 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-06-01 14:32:24,053 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-01 14:32:24,525 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+WARNING 2024-06-01 14:32:26,446 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-06-01 14:32:26,458 - Not Found: /assets/images/chat/avatar/06.png - log_response
+WARNING 2024-06-01 14:32:26,464 - Not Found: /assets/images/user/1.jpg - log_response
+WARNING 2024-06-01 14:32:26,467 - Not Found: /assets/images/chat/avatar/05.png - log_response
+WARNING 2024-06-01 14:32:26,482 - Not Found: /assets/images/chat/avatar/07.png - log_response
+WARNING 2024-06-01 14:32:26,487 - Not Found: /assets/images/chat/avatar/10.png - log_response
+WARNING 2024-06-01 14:32:26,492 - Not Found: /assets/images/chat/avatar/08.png - log_response
+DEBUG 2024-06-22 06:49:00,494 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-22 06:49:01,020 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-06-22 06:49:01,028 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-22 06:49:01,623 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-06-22 06:49:32,789 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-22 06:49:34,700 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-06-22 06:49:34,703 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-22 06:49:35,625 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+WARNING 2024-06-22 06:49:40,263 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-06-22 06:49:40,274 - Not Found: /assets/images/chat/avatar/06.png - log_response
+WARNING 2024-06-22 06:49:40,280 - Not Found: /assets/images/user/1.jpg - log_response
+WARNING 2024-06-22 06:49:40,285 - Not Found: /assets/images/chat/avatar/05.png - log_response
+WARNING 2024-06-22 06:49:40,292 - Not Found: /assets/images/chat/avatar/07.png - log_response
+WARNING 2024-06-22 06:49:40,295 - Not Found: /assets/images/chat/avatar/08.png - log_response
+WARNING 2024-06-22 06:49:40,304 - Not Found: /assets/images/chat/avatar/10.png - log_response
+WARNING 2024-06-22 06:49:55,442 - Not Found: /assets/images/chat/avatar/06.png - log_response
+WARNING 2024-06-22 06:49:55,448 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-06-22 06:49:58,393 - Not Found: /assets/images/chat/avatar/07.png - log_response
+WARNING 2024-06-22 06:49:58,396 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-06-22 06:51:26,413 - Not Found: /assets/images/chat/avatar/10.png - log_response
+WARNING 2024-06-22 06:51:38,495 - Not Found: /assets/images/chat/avatar/10.png - log_response
+WARNING 2024-06-22 06:51:38,502 - Not Found: /assets/images/chat/avatar/01.png - log_response
+WARNING 2024-06-22 06:55:34,778 - Not Found: /favicon.ico - log_response
+DEBUG 2024-06-22 06:56:08,031 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-22 06:56:08,742 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+DEBUG 2024-06-22 06:56:08,771 - Starting new HTTP connection (1): ip-api.com:80 - _new_conn
+DEBUG 2024-06-22 06:56:09,355 - http://ip-api.com:80 "GET /json/127.0.0.1 HTTP/1.1" 200 64 - _make_request
+WARNING 2024-06-22 06:56:47,382 - Not Found: /favicon.ico - log_response
