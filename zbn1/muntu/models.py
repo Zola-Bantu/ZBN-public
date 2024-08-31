@@ -110,12 +110,14 @@ class Pipe(models.Model): # Good for now, will eventually become contact request
 # Message table (one-to-many).
 class Message(models.Model):
 	time_created = models.DateTimeField(auto_now_add=True)
-	sender_addr = models.CharField(max_length=50, blank=True, null=True);
-	reciever_addr = models.CharField(max_length=50, blank=True, null=True);
+	timestamp = models.CharField(max_length=500, blank=True, null=True);
+	sender_addr = models.CharField(max_length=100, blank=True, null=True);
+	reciever_addr = models.CharField(max_length=100, blank=True, null=True);
 	message = models.TextField(blank=True, null=True);
-	signature = models.CharField(max_length=50, blank=True, null=True);
+	secret = models.TextField(blank=True, null=True);
 	nonce = models.CharField(max_length=50, blank=True, null=True);
-	pkn = models.CharField(max_length=5000, default='0');	    # Public key n.
+	signature = models.CharField(max_length=50, blank=True, null=True);
+	pkn = models.TextField(blank=True, null=True);	    # Public key n.
 	pke = models.CharField(max_length=100, default='0');	    # Public key e.
 
 	def __str__(self):
